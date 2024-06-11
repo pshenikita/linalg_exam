@@ -1,0 +1,83 @@
+\section{Прямая сумма подпространств. Внешняя прямая сумма векторных пространств}
+
+\begin{definition}
+    Сумма $V_1 + V_2$ подпространств пространства $V$ называется \textit{прямой} (обозначается $V_1 \oplus V_2$), если $\forall v \in V_1 + V_2$ представление $v = v_1 + v_2$, где $v_1 \in V_1$, $v_2 \in V_2$, единственно.
+\end{definition}
+
+\begin{theorem}
+    Следующие условия эквивалентны для подпространств $V_1$ и $V_2$:
+    \begin{enumerate}[nolistsep]
+        \item сумма $V_1 + V_2$ прямая;
+        \item $V_1 \cap V_2 = \{\bs{0}\}$;
+        \item если $\bs{0} = v_1 + v_2$, где $v_1 \in V_1$ и $v_2 \in V_2$, то $v_1 = v_2 = \bs{0}$;
+        \item $\dim(V_1 + V_2) = \dim V_1 + \dim V_2$.
+    \end{enumerate}
+\end{theorem}
+
+\begin{proof}
+    $1 \Rightarrow 2$. Пусть найдётся $v \in V_1 + V_2$, $v \ne \bs{0}$. Тогда $\bs{0} = \bs{0} + \bs{0} = v + (-v)$. Получаем, что представление вектора $\bs{0}$ не единственно, и сумма $V_1 + V_2$ не прямая.
+
+    $2 \Rightarrow 3$. Если существует представление $\bs{0} = v_1 + v_2$, где $v_1 \in V_1$ и $v_2 = (-v_1) \in V_2$ и $v_1 \ne \bs{0}$, т.\,е. $v_1 \in V_1 \cap V_2 \ne \{\bs{0}\}$ --- противоречие.
+
+    $3 \Rightarrow 1$. Пусть у вектора $v \in V$ есть два разложения $v = u_1 + u_2 = v_1 + v_2$, где $u_1, v_2 \in V_1$ и $u_2, v_2 \in V_2$. Тогда $\bs{0} = (u_1 - v_1) + (u_2 - v_2)$, где $u_1 - v_1 \in V_1$ и $u_2 - v_2 \in V_2$. Следовательно, $u_1 - v_1 = u_2 - v_2 = \bs{0}$, т.\,е. два разложения совпадают.
+
+    $2 \Leftrightarrow 4$. Следствие формулы Грассмана.
+\end{proof}
+
+\begin{definition}
+    Сумма $V_1 + \ldots + V_n$ подпространств пространства $V$ называется \textit{прямой} (обозначается $V_1 \oplus \ldots \oplus V_n$), если $\forall v \in V_1 + \ldots + V_n$ представление $v = v_1 + v_2 + \ldots + v_n$, где $v_i \in V_i$, единственно.
+\end{definition}
+
+\begin{theorem}
+    Для подпространств $V_1, \ldots, V_n$ пространства $V$ следующие условия эквивалентны:
+    \begin{enumerate}[nolistsep]
+        \item сумма $V_1 + \ldots + V_n$ прямая;
+        \item $V_i \cap \sum\limits_{j \ne i}V_j = \{\bs{0}\}$;
+        \item если $\bs{0} = v_1 + \ldots + v_n$, где $v_i \in V_i$, то $v_1 = \ldots = v_n = \bs{0}$;
+        \item $\dim\br{\sum\limits_iV_k} = \sum\limits_i\dim V_i$.
+    \end{enumerate}
+\end{theorem}
+
+\begin{proof}
+    Индукция по $n$ с помощью предыдущей теоремы.
+\end{proof}
+
+\begin{remark}
+    При $n \geqslant 3$ условие $2$ в предыдущей теореме сильнее, чем условие $V_i \cap V_j = \{\bs{0}\}$ $\forall i \ne j$. Это последнее условие не гарантирует, что сумма подпространств прямая. Действительно, рассмотрим следующие три подпространства в $\R^2$ со стандартным базисом $e_1, e_2$: $V_1 = \langle e_1\rangle$, $V_2 = \langle e_2\rangle$ и $V_3 = \langle e_1 + e_2\rangle$. Тогда $V_i \cap V_j = \{\bs{0}\}$ $\forall i \ne j$, но сумма данных подпространств не прямая, т.\,к. \[e_1 + e_2 = e_1 + e_2 + \bs{0} = \bs{0} + \bs{0} + (e_1 + e_2).\]
+\end{remark}
+
+\begin{definition}
+    Пусть $V_1, \ldots, V_n$ --- линейные пространства над одним полем $\F$. Их \textit{внешней прямой суммой} (обозначается как $V_1 \oplus \ldots \oplus V_n$) называется линейное пространство $V_1 \times \ldots \times V_n$ с операциями, определёнными покомпонентно:
+    \[
+        (u_1, \ldots, u_n) + (v_1, \ldots, v_n) = (u_1 + v_1, \ldots, u_n + v_n),\quad \lambda \cdot (v_1, \ldots, v_n) = (\lambda v_1, \ldots, \lambda v_n).
+    \]
+\end{definition}
+
+\begin{proposal}
+    Для любого пространства $U \subset V$ найдётся подпространство $W \subset V$ такое, что $V = U \oplus W$.
+\end{proposal}
+
+\begin{definition}
+    Такое подпространство $W$ называется \textit{прямым дополнением} к $U$.
+\end{definition}
+
+\begin{proof}
+    Пусть $e_1, \ldots, e_k$ --- базис в $U$. Его можно дополнить до базиса $V$ векторами $e_{k + 1}, \ldots, e_n$ (где $n = \dim V$), тогда искомое $W \vcentcolon = \langle e_{k + 1}, \ldots, e_n\rangle$.
+\end{proof}
+
+\begin{remark}
+    Пространство $V = V_1 + \ldots + V_m$ можно превратить в прямую сумму пространств. Рассмотрим $U_i = \{(\bs{0}, \ldots, \bs{0}, v_i, \bs{0}, \ldots, \bs{0}) : v_i \in V_i\} \subset V$. Тогда
+    \[
+        (v_1, \ldots, v_m) = (v_1, \bs{0}, \ldots, \bs{0}) + (\bs{0}, v_2, \ldots, \bs{0}) + \ldots + (\bs{0}, \ldots, \bs{0}, v_m),
+    \]
+    а отсюда $V = U_1 \oplus \ldots \oplus U_m$.
+\end{remark}
+
+\begin{definition}
+    Пусть $V_1, \ldots, V_n$ --- линейные пространства над одним и тем же полем $\F$. Их \textit{внешней прямой суммой}, обозначаемой через $V_1 \oplus \ldots \oplus V_n$, называеся линейное пространство $V_1 \times \ldots \times V_n$ с операциями, определёнными покомпонентно:
+    \begin{gather*}
+        (u_1, \ldots, u_n) + (v_1, \ldots, v_n) \vcentcolon = (u_1 + v_1, \ldots, u_n + v_n),\\
+        \lambda \cdot (v_1, \ldots, v_n) \vcentcolon = (\lambda v_1, \ldots, \lambda v_n).
+    \end{gather*}
+\end{definition}
+

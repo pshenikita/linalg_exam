@@ -1,0 +1,90 @@
+\section{Корневые подпространства. Разложение пространства в прямую сумму корневых подпространств}
+
+\begin{definition}
+    Вектор $v \in V$ называется \textit{корневым вектором} оператора $\A$, отвечающим числу $\lambda \in \F$, если существует такое $m$, что $(\A - \lambda \cdot \id)^mv = \bs{0}$.
+\end{definition}
+
+Обозначим через $R_\lambda$ множество всех корневых векторов, отвечающих $\lambda$.
+
+\begin{proposal}
+    $R_\lambda$ является подпространством в $V$.
+\end{proposal}
+
+\begin{proof}
+    Пусть $u, v \in R_\lambda$, т.\,е. $(\A - \lambda \cdot \id)^\ell u = (\A - \lambda \cdot \id)^mv = \bs{0}$ для некоторых $\ell$ и $m$. Тогда $(\A - \lambda \cdot \id)^\ell(\mu u) = \bs{0}$ $\forall \mu \in \F$ и $(\A - \lambda \cdot \id)^{\max\{\ell, m\}}(u + v) = \bs{0}$.
+\end{proof}
+
+\begin{definition}
+    Подпространство $R_\lambda \subseteq V$ называется \textit{корневым подпространством} для оператора $\A$, отвечающим $\lambda$.
+\end{definition}
+
+\begin{proposal}
+    Подпространство $R_\lambda$ нетривиально тогда и только тогда, когда $\lambda$ --- собственное значение оператора $\A$. При этом $V_\lambda \subseteq R_\lambda$.
+\end{proposal}
+
+\begin{proof}
+    Действительно, если $\lambda$ --- собственное значение, то существует $v \ne \bs{0}$ такой, что $(\A - \lambda \cdot \id)^1v = \bs{0}$, т.\,е. $v \in R_\lambda$ и $R_\lambda$ нетривиально. Отсюда же следует, что $V_\lambda \subseteq R_\lambda$.
+
+    Обратно, пусть $R_\lambda$ содержит $u \ne \bs{0}$ такой, что $(\A - \lambda \cdot \id)^mu = \bs{0}$, причём $m$ минимально, т.\,е. $v \vcentcolon = (\A - \lambda \cdot \id)^{m - 1}u \ne \bs{0}$. Тогда $(\A - \lambda \cdot \id)v = (\A - \lambda \cdot \id)^mu = \bs{0}$, т.\,е. $v$ --- собственный вектор, отвечающий $\lambda$.
+\end{proof}
+
+Далее будем рассматривать только нетривиальные корневые подпространства.
+
+\begin{theorem}
+    Пусть $\A$ --- оператор в пространстве $V$ над алгебраически замкнутым полем, и пусть $\lambda_1, \ldots, \lambda_k$ --- все собственные значения оператора $\A$. Тогда $V = R_{\lambda_1} \oplus \ldots \oplus R_{\lambda_k}$.
+\end{theorem}
+
+Доказательство будет опираться на три леммы.
+
+\begin{lemma}
+    Подпространство $R_\lambda$ инвариантно относительно любого оператора $\A - \mu \cdot \id$ (в частности, относительно $\A$). Ограничение $(\A - \mu \cdot \id)\big|_{R_\lambda}: R_\lambda \to R_\lambda$ при $\lambda \ne \mu$ является обратимым, а при $\lambda = \mu$ нильпотентным оператором.
+\end{lemma}
+
+\begin{proof}
+    Пусть $v \in R_\lambda$, т.\,е. $(\A - \lambda \cdot \id)v = \bs{0}$. Тогда
+    \[
+        (\A - \lambda \cdot \id)^m(\A - \mu \cdot \id)v = (\A - \mu \cdot \id)\underbrace{(\A - \mu \cdot \id)^mv}_{\bs{0}} = \bs{0},
+    \]
+    т.\,к. многочлены от оператора коммутируют. Итак, $R_\lambda$ является $(\A - \mu \cdot \id)$-инвариантным подпространством, и мы можем рассмотреть ограничение $(\A - \mu \cdot \id)\big|_{R_\lambda}$. Пусть $v \in \Ker(\A - \mu \cdot \id)\big|_{R_\lambda}$, т.\,е. $v \in R_\lambda$ и $\A v = \mu v$. Тогда $(\A - \lambda \cdot \id)^mv = \bs{0}$ для некоторого $m$ и $(\A - \lambda \cdot \id)v = (\mu - \lambda)v$, а значит, $(\mu - \lambda)^mv = (\A - \lambda \cdot \id)^mv = \bs{0}$. Следовательно, при $\mu \ne \lambda$ имеем $v = \bs{0}$. Тогда ядро $(\A - \mu \cdot \id)\big|_{R_\lambda}$ тривиально, и этот оператор инъективен, а значит, обратим.
+
+    Наконец, если $e_1, \ldots, e_r$ --- базис в $R_\lambda$ и $(\A - \lambda \cdot \id)^{m_i}e_i = \bs{0}$, то $(\A - \lambda \cdot \id)^mv = \bs{0}$, $\forall v \in V$, где $m = \max\{m_1, \ldots, m_r\}$.
+\end{proof}
+
+\begin{lemma}
+    Корневые подпространства $R_{\lambda_1}, \ldots, R_{\lambda_k}$, соответствующие различным собственным зрачениям $\lambda_1, \ldots, \lambda_k$ образуют прямую сумму.
+\end{lemma}
+
+\begin{proof}
+    Проведём индукцию по $k$ При $k = 1$ доказывать нечего. Предположим, что утверждение доказано для $k - 1$ подпространств. Докажем, что соотношение $(\ast)$: $v_1 + \ldots + v_k = \bs{0}$, где $v_i \in R_{\lambda_i}$, влечёт $v_1 = \ldots = v_k = \bs{0}$. Имеем $(\A - \lambda_k \cdot \id)^pv_k = \bs{0}$ для некоторого $p$. Применив к $(\ast)$ оператор $(\A - \lambda_k \cdot \id)^p$, получим $(\star):$ $(\A - \lambda_k \cdot \id)^pv_1 + \ldots + (\A - \lambda_k \cdot \id)^pv_{k - 1} = \bs{0}$. Т.\,к. подпространства $R_{\lambda_1}, \ldots, R_{\lambda_{k - 1}}$ инвариантны относительно $A - \lambda_k \cdot \id$, мы имем $(\A - \lambda_k \cdot \id)^pv_i \in R_{\lambda_i}$, $i = 1, \ldots, k - 1$. По предположению индукции, из $(\star)$ следует $(\A - \lambda_k \cdot \id)^pv_i = \bs{0}$. А т.\,к. по предыдущей лемме оператор $\A - \lambda_k \cdot \id$ в пространства $R_{\lambda_1}, \ldots, R_{\lambda_{k - 1}}$ обратим, то $v_1 = \ldots = v_{k - 1} = \bs{0}$. Тогда из $(\ast)$ получаем $v_k = \bs{0}$.
+\end{proof}
+
+\begin{lemma}
+    Размерность корневого подпространства $R_\lambda$ равна кратности $\lambda$ как корня характеристического многочлена оператора $\A$.
+\end{lemma}
+
+\begin{proof}
+    Обозначим через $r_\lambda$ кратность корня $\lambda$. Пусть $\widehat{A} = \A\big|_{R_\lambda}$ --- ограничение оператора $\A$ на $R_\lambda$ и $\widetilde{\A}: V / R_\lambda \to V / R_\lambda$ --- фактор-оператор. Тогда для характеристических многочленов мы имеем $(\ast):$ $\chi_\A(t) = \chi_{\widehat{\A}}(t) \cdot \chi_{\widetilde{\A}}(t) = (\lambda - t)^{\dim R_\lambda}\chi_{\widetilde{\A}}(t)$, потому что
+    $
+    A =
+    \left(
+        \begin{array}{c | c}
+            \widehat{A} & \ast\\
+            \hline\vspace{-4mm}\\
+            0 & \widetilde{A}
+        \end{array}
+    \right)
+    $ в некотором базисе (т.\,к. $R_\lambda$ --- инвариантное подпространство). Отсюда $\dim R_\lambda \leqslant r_\lambda$.
+
+    Предположим, что $\dim R_\lambda < r_\lambda$. Тогда из $(\ast)$ следует, что $\lambda$ является корнем многочлена $\chi_{\widetilde{\A}}(t)$, т.\,е. собственным значением оператора $\widetilde{\A}$. Пусть $v + R_\lambda$ --- соответствующий (ненулевой) собственный вектор, т.\,е. $\A(v + R_\lambda) = \lambda(v + R_\lambda)$ или $\A v + R_\lambda = \lambda v + R_\lambda$. Отсюда вытекает, что $\A v - \lambda v = (\A - \lambda \cdot \id)v \in R_\lambda$. По определению $R_\lambda$ это значит, что $\bs{0} = (\A - \lambda \cdot \id)^m(\A - \lambda \cdot \id)v = (\A - \lambda \cdot \id)^{m + 1}v$, т.\,е. $v \in R_\lambda$. Но тогда $v + R_\lambda$ --- нулевой вектор пространства $V / R_\lambda$. Противоречие.
+\end{proof}
+
+Теперь докажем основную теорему:
+
+\begin{proof}
+    Пусть $\dim V = n$ и $r_i$ --- кратность корня $\lambda_i$, $i = 1, \ldots, k$. Тогда $\sum\limits_{i = 1}^kr_i = n$ (здесь мы пользуемся алгебраической замкнутостью поля) и из двух предыдущих лемм вытекает, что $\dim(R_{\lambda_1} \oplus \ldots \oplus R_{\lambda_k}) = \sum\limits_{i = 1}^kr_i = \dim V$.
+\end{proof}
+
+\begin{definition}
+    Разложение $V = R_{\lambda_1} \oplus \ldots \oplus R_{\lambda_k}$ называется \textit{корневым}.
+\end{definition}
+

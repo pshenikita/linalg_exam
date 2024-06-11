@@ -1,0 +1,164 @@
+\section{Инвариантные подпространства линейного оператора. Ограничение линейного оператора на инвариантное подпространство. Вид матрицы линейного оператора при наличии инвариантных подпространств}
+
+\begin{definition}
+    Подпространство $W \subset V$ называется \textit{инвариантным} относительно оператора $\A: V \to V$, если $\A(W) \subseteq W$.
+\end{definition}
+
+\begin{example}
+    $\Ker\A$ и $\Im\A$ являются инвариантными подпространствами. Пусть $W \subset V$ --- инвариантное подпространство для оператора $\A: V \to V$. Выберем базис $e_1, \ldots, e_k$ в $W$ и дополним его до базиса $e_1, \ldots, e_k, e_{k + 1}, \ldots, e_n$ в $V$. Пусть $A = (a^i_j)$ --- матрица оператора $\A$ в этом базисе. Тогда $\A e_j = a^1_je_j + \ldots a^k_je_k$ при $j = 1, \ldots, k$. Это означает, что матрица $A$ имеет вид
+    $
+    A =
+    \left(\begin{array}{c | c}
+        \ast & \ast\\
+        \hline
+        0 & \ast
+    \end{array}
+    \right)
+    $, где в левом нижнем углу стоит матрица размера $(n - k) \times k$ из нулей. Аналогично, если имеет место разложение $V = W_1 \oplus W_2$ в прямую сумму инвариантных подпространств, $\A(W_1) \subset W_1$, $\A(W_2) \subset W_2$, то в подходящем базисе матрица оператора $\A$ будет иметь блочно-диагональный вид:
+    $
+    A =
+    \left(\begin{array}{c | c}
+        \ast & 0\\
+        \hline
+        0 & \ast
+    \end{array}
+    \right)
+    $.
+\end{example}
+
+\begin{definition}
+    Пусть $W \subset V$ --- инвариантное подпространство для оператора $\A: V \to V$. Тогда оператор $\widehat{\A}: W \to W$, определённый равенством $\widehat{\A}w \vcentcolon \A w$ для $w \in W$, называется \textit{ограничением} оператора $\A$ на подпространство $W$ и часть обозначается как $\A\big|_W$.
+\end{definition}
+
+\begin{definition}
+    Линейный оператор $\widetilde{A}: V / W \to V / W$, определённый на классах смежности по правилу $\widetilde{A}(v + W) = \A v + W$, называется \textit{фактор-оператором}.
+\end{definition}
+
+Определение фактор-операора корректно. Действительно, если $v + W = u + W$, то $v - u \in W$, $\A(v - u) \in W$, и мы имеем $\widetilde{A}(v + W) = \A(u + v = u) + W = \A u + \A(v - u) + W = \A u + W = \widetilde{\A}(u + W)$.
+
+\begin{proposal}
+    Пусть $W \subset V$ --- инвариантное подпространство для оператора $\A: V \to V$. Пусть $e_1, \ldots, e_k$ --- базис в $W$ и $e_1, \ldots, e_k, e_{k + 1}, \ldots, e_n$ --- базис в $V$. Тогда матрица оператора $\A$ в этом базисе имеет вид
+    $
+    A =
+    \left(
+    \begin{array}{c | c}
+        \widehat{A} & \ast\\
+        \hline\vspace{-4mm}\\
+        0 & \widetilde{A}
+    \end{array}
+    \right)
+    $, где $\widehat{A}$ --- матрица ограничения $\A\big|_W$ в базисе $e_1, \ldots, e_k$, а $\widetilde{A}$ --- матрица фактор-оператора в базисе $e_{k + 1} + W, \ldots, e_n + W$ факторпространства $V / W$.
+\end{proposal}
+
+\begin{proof}
+    Пусть 
+    $
+    A =
+    \begin{pmatrix}
+        a^1_1 & a^1_2 & \ldots & a^1_n\\
+        a^2_1 & a^2_2 & \ldots & a^2_n\\
+        \vdots & \vdots & \ddots & \vdots\\
+        a^n_1 & a^n_2 & \ldots & a^n_n
+    \end{pmatrix}
+    $. Тогда
+    $
+    \widehat{A} =
+    \begin{pmatrix}
+        a^1_1 & \ldots & a^1_k\\
+        \vdots & \ddots & \vdots\\
+        a^k_1 & \ldots & a^k_k
+    \end{pmatrix}
+    $ и
+    $
+    \widetilde{A} =
+    \begin{pmatrix}
+        a^{k + 1}_{k + 1} & \ldots & a^{k + 1}_n\\
+        \vdots & \ddots & \vdots\\
+        a^n_{k + 1} & \ldots & a^n_n
+    \end{pmatrix}
+    $. Разложим вектор по базису: $v = v_1e_1 + \ldots + v_ke_k + \ldots + v_{k + 1}e_{k + 1} + \ldots + v_ne_n$. Отметим, что в силу инвариантности подпространства $W$ имеет место
+    $
+    A \cdot (v_1, \ldots, v_k, 0, \ldots, 0)^t = (\underbrace{\ast, \ldots, \ast}_{k}, 0, \ldots, 0)^t
+    $. Итак,
+    \begin{multline*}
+        \A v = A \cdot v =
+        \begin{pmatrix}
+            a^1_1 & a^1_2 & \ldots & a^1_n\\
+            a^2_1 & a^2_2 & \ldots & a^2_n\\
+            \vdots & \vdots & \ddots & \vdots\\
+            a^n_1 & a^n_2 & \ldots & a^n_n
+        \end{pmatrix} \cdot
+        \begin{pmatrix}
+            v_1\\
+            \vdots\\
+            v_k\\
+            v_{k + 1}\\
+            \vdots\\
+            v_n
+        \end{pmatrix} = 
+        \begin{pmatrix}
+            a^1_1 & a^1_2 & \ldots & a^1_n\\
+            a^2_1 & a^2_2 & \ldots & a^2_n\\
+            \vdots & \vdots & \ddots & \vdots\\
+            a^n_1 & a^n_2 & \ldots & a^n_n
+        \end{pmatrix} \cdot \left(
+        \begin{pmatrix}
+            v_1\\
+            \vdots\\
+            v_k\\
+            0\\
+            \vdots\\
+            0
+        \end{pmatrix}
+        +
+        \begin{pmatrix}
+            0\\
+            \vdots\\
+            0\\
+            v_{k + 1}\\
+            \vdots\\
+            v_n
+        \end{pmatrix}
+        \right) =\\
+        =
+        \left(
+        \begin{array}{c | c}
+            \widehat{A} & 0\\
+            \hline
+            0 & 0
+        \end{array}
+        \right) \cdot v + 
+        \left(
+        \begin{array}{c | c}
+            0 & \ast\\
+            \hline\vspace{-4mm}\\
+            0 & \widetilde{A}
+        \end{array}
+        \right) \cdot v =
+        \left(
+        \begin{array}{c | c}
+            \widehat{A} & \ast\\
+            \hline\vspace{-4mm}\\
+            0 & \widetilde{A}
+        \end{array}
+        \right) \cdot v.
+    \end{multline*}
+    Отсюда и следует, что в выбранном базисе матрица $A$ имеет указанный вид.
+\end{proof}
+
+\begin{remark}
+    В конспектах Т.\,Е. Панова написано, что это утверждение примерно очевидно и доказывать мы его не будем. Поэтому изложенное выше доказательство я проделал сам, оно может содержать ошибки.
+\end{remark}
+
+\begin{corollary}
+    Если пространство $V$ представлено в виде прямой суммы ненулевых инвариантных относительно преобразования $\A$ подпространств $V = W_1 \oplus \ldots \oplus W_k$, то существует базис, в котором матрица преобразования имеет блочно-диагональный вид
+    $
+        A = \operatorname{diag}(A_1, \ldots, A_k) =
+        \begin{pmatrix}
+            A_1 & \ldots & 0\\
+            \vdots & \ddots & \vdots\\
+            0 & \ldots & A_k
+        \end{pmatrix}
+    $, где $A_i$ --- матрица ограничения $\A\big|_{W_i}$ преобразования $\A$ на подпространство $W_i$, $i = 1, \ldots, k$.
+\end{corollary}
+

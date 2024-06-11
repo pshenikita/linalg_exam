@@ -1,0 +1,67 @@
+\section{Линейные отображения и операторы. Ядро и образ, связь их размерностей. Критерий инъективности}
+
+\begin{definition}
+    Пусть $V$ и $W$ --- линейные пространства над полем $\F$. Отображение $\A: V \to W$ называется \textit{линейным}, если $\forall u, v \in V$, $\forall \lambda \in \F$ выполнено $\A(u + v) = \A u + \A v$ и $\A(\lambda v) = \lambda\A v$.
+\end{definition}
+
+\begin{definition}
+    Линейное отображение $\A: V \to V$ из пространства $V$ в себя называется \textit{линейным оператором}.
+\end{definition}
+
+\begin{definition}
+    Пусть $\A: V \to W$ --- линейное отображение. \textit{Ядром} $\A$ называется множество $\Ker\A \vcentcolon = \{v \in V : \A v = \bs{0}\}$. \textit{Образом} $\A$ называется множество $\Im \A \vcentcolon = \{\A v : v \in V\}$.
+\end{definition}
+
+\begin{proposal}
+    Пусть $\A: V \to W$ --- линейное отображение. Тогда $\Ker \A$ --- подпространство в $V$, а $\Im\A$ --- подпространство в $W$.
+\end{proposal}
+
+\begin{proof}
+    Пусть $u, v \in \Ker\A$. Т.\,е. $\A u = \A v = \bs{0}$. Тогда $\A(u + v) = \A u + \A v = \bs{0}$ и $\A(\lambda u) = \lambda\A u = \bs{0}$. Следовательно, $u + v \in \Ker\A$ и $\lambda u \in \Ker \A$ $\forall \lambda \in \F$, а значит, $\Ker\A$ --- подпространство в $V$.
+
+    Пусть теперь $x, y \in \Im\A$, т.\,е. $\exists u, v \in V: \A u = x, \A v = y$. Тогда $\A(u + v) = x + y$ и $\A(\lambda u) = \lambda x$. Следовательно, $x + y \in \Im\A$ и $\lambda x \in \Im\A$ $\forall \lambda \in \F$, а значит, $\Im\A$ --- подпространство в $W$.
+\end{proof}
+
+\begin{lemma}[Критерий инъективности]
+    Линейное отображение $\A: V \to W$ инъективно тогда и только тогда, когда $\Ker\A = \{\bs{0}\}$.
+\end{lemma}
+
+\begin{proof}
+    $\Rightarrow$. Мы знаем, что $\A\bs{0} = \bs{0}$, а т.\,к. $\A$ инъективно, то $\bs{0}$ --- единственный вектор из $V$, переходящий в $\bs{0}$, отсюда $\Ker\A = \{\bs{0}\}$.
+
+    $\Leftarrow$. Пусть $\A u = \A v \Rightarrow \A(u - v) = \bs{0}$, значит, $u - v \in \Ker\A = \{\bs{0}\}$, отсюда $u = v$.
+\end{proof}
+
+\begin{theorem}
+    Пусть $\A: V \to W$ --- линейное отображение. Тогда соответствие $v + \Ker\A \mapsto \A v$ задаёт изоморфизм между факторпространством $V / \Ker\A$ и подпространством $\Im\A$.
+\end{theorem}
+
+\begin{proof}
+    Сначала проверим, что $v + \Ker\A \mapsto \A v$ действительно корректно определяет отображение $\widetilde{\A}: V / \Ker\A \to \Im\A$. Для этого нужно проверить, что если $u + \Ker\A = v + \Ker\A$, то $\A u = \A v$. Из равенства классов смежности следует $u - v \in \Ker\A$, а отсюда $\A(u - v) = \bs{0}$, т.\,е. $\A u = \A v$. Итак, отображение $\widetilde{\A}$ определено корректно.
+
+    Линейность и сюръективность $\widetilde{\A}$ очевидны. Инъективность проверяется по критерию: \[\Ker\widetilde{\A} = \{(v + \Ker\A) \in V / \Ker\A : \widetilde{\A}(v + \Ker\A) = \A v = \bs{0}\} = \Ker\A = \bs{0} + \Ker\A.\] Итак, $\widetilde{\A}$ задаёт изоморфизм $V / \Ker\A \simeq \Im\A$.
+\end{proof}
+
+\begin{corollary}
+    Для всякого линейного отображения $\A: V \to W$ мы имеем \[\dim V = \dim\Ker\A + \dim\Im\A.\]
+\end{corollary}
+
+\begin{proposal}
+    Если в каких-то базисах пространств $V$ и $W$ линейное отображение $\A: V \to W$ имеет матрицу $A$, то
+    \[
+        \dim\Im\A = \rk A.
+    \]
+\end{proposal}
+
+\begin{proof}
+    Очевидно, что $\Im\A$ есть линейная оболочка образов базисных векторов $e_1, \ldots, e_n$ пространства $V$ и, значит, $\dim\Im\A$ есть ранг системы векторов $\A(e_1), \ldots, \A(e_n)$. Но в столбцах матрицы $A$ как раз и записаны координаты этих векторов в каком-то базисе пространства $W$. Следовательно, ранг этой системы векторов равен рангу матрицы $A$.
+\end{proof}
+
+\begin{definition}
+    Множество всех линейных отображений $\A: V \to W$ с операциями сложения и умножения на скаляры
+    \[
+        (\A_1 + \A_2)(v) \vcentcolon = \A_1v + \A_2v,\quad (\lambda\A)(v) \vcentcolon = \lambda(\A v)
+    \]
+    является линейным пространством. Оно называется \textit{пространством линейных отображений} из $V$ в $W$ и обозначается $\Hom_\F(V, W)$.
+\end{definition}
+

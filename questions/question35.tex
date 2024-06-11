@@ -1,0 +1,170 @@
+\section{Теорема Пифагора. Угол и расстояние между вектором и подпространством. Объём $n$-мерного параллелепипеда}
+
+\begin{theorem}[Пифагор]
+    Если два вектора $u$ и $v$ евклидова пространства $V$ ортогональны, то $\abs{u + v}^2 = \abs{u}^2 + \abs{v}^2$.
+\end{theorem}
+
+\begin{proof}
+    Действительно,
+    \[
+        \abs{u + v}^2 = (u + v, u + v) = (u, u) + 2 \cdot \underbrace{(u, v)}_{{} = 0} + (v, v) = \abs{u}^2 + \abs{v}^2.
+    \]
+\end{proof}
+
+\begin{remark}
+    По индукции легко доказать $\forall k \in \N$, что если вектора $v_1, \ldots, v_k$ попарно ортогональны, то
+    \[
+        \abs{v_1 + \ldots + v_k}^2 = \abs{v_1}^2 + \ldots + \abs{v_k}^2.
+    \]
+\end{remark}
+
+\begin{definition}
+    Пусть $V$ --- евклидово пространство. \textit{Углом} между ненулевым вектором $v \in V$ и подпространством $W \subset V$ называется точная нижняя грань углов между $v$ и произвольным вектором $w \in W$:
+    \[
+        \angle(v, W) \vcentcolon = \inf\limits_{w \in W}\angle(v, w).
+    \]
+\end{definition}
+
+Точная нижняя грань $\inf\limits_{w \in W}\angle(v, w)$ существует, т.\,к. множество углов $\angle(v, w)$ ограничено снизу нулём. На самом деле, она достигается на векторе $w = \pr_Wv$, как показано в следующим утверждении.
+
+\begin{proposal}
+    $\angle(v, W) = \angle(v, \pr_Wv)$.
+\end{proposal}
+
+\begin{proof}
+    Пусть $w \in W$ --- произвольный ненулевой вектор. Обозначим $\alpha \vcentcolon = \angle(v, \pr_Wv)$, $\beta \vcentcolon = \angle(v, w)$ и $v_1 = \pr_Wv$. Необходимо показать, что $\alpha \leqslant \beta$. Т.\,к. $0 \leqslant \alpha, \beta \leqslant \pi$, то это требуемое неравенство равносильно $\cos\alpha \geqslant \cos\beta$, т.\,е.
+    \[
+        \frac{(v, v_1)}{\abs{v}\abs{v_1}} \geqslant \frac{(v, w)}{\abs{v}\abs{w}}.
+    \]
+
+    Запишем $v = v_1 + v_2$, где $v_2 = \ort_Wv \in W^\perp$. Тогда $(v, v_1) = (v_1 + v_2, v_1) = \abs{v_1}^2$ и $(v, w) = (v_1 + v_2, w) = (v_1, w)$. Подставив это в последнее неравенство, получим $\abs{v_1} \geqslant \frac{(v_1, w)}{\abs{w}}$, что вытекает из неравенства Коши "---Буняковского.
+\end{proof}
+
+\begin{definition}
+    Определим \textit{расстояние между векторами} $u$ и $v$ метрического пространства $V$ по формуле
+    \[
+        \rho(u, v) \vcentcolon = \abs{u - v}.
+    \]
+\end{definition}
+
+Легко проверить, что определённая нами функция удовлетворяет всем аксиомам метрики (неравенство треугольника легко получить из доказанного выше следствия неравенства Коши "---Буняковского).
+
+\begin{definition}
+    \textit{Расстояние между вектором $v$ и подпространством $W$} евклидова пространства определяется по формуле
+    \[
+        \rho(v, W) \vcentcolon = \inf\limits_{w \in W}\rho(v, w).
+    \]
+\end{definition}
+
+Опять же, точная нижняя грань существует, т.\,к. множество расстояний $\rho(v, w)$ ограничено снизу нулём. И достигается она опять на векторе $\pr_Wv$.
+
+\begin{proposal}
+    $\rho(v, W) = \rho(v, \pr_Wv) = \abs{\ort_Wv}$.
+\end{proposal}
+
+\begin{proof}
+    Представим $v$ в виде $v = v_1 + v_2$, где $v_1 = \pr_Wv$, $v_2 = \ort_Wv$. Для произвольного вектора $w \in W$ имеем
+    \[
+        \rho(v, w)^2 = \abs{v - w}^2 = \abs{(v_1 + v_2) - w}^2 = \abs{(v_1 - w) + v_2}^2.
+    \]
+
+    Т.\,к. векторы $v_1 - w \in W$ и $v_2 \in W^\perp$ ортогональны, то по теореме Пифагора получаем
+    \[
+        \abs{(v_1 - w) + v_2}^2 = \abs{v_1 - u}^2 + \abs{v_2}^2 \geqslant \abs{v_2}^2 = \rho^2(v, \pr_Wv).
+    \]
+\end{proof}
+
+\begin{definition}
+    Будем называть \textit{$k$-мерным параллелепипедом}, натянутым на вектора $a_1, \ldots, a_k$ евклидова пространства, будем называть множество
+    \[
+        \Pi(a_1, \ldots, a_k) \vcentcolon = \left\{\sum_{i = 1}^nx^ia_i : 0 \leqslant x^i \leqslant 1\right\}.
+    \]
+
+    \textit{Основанием} этого $k$-мерного параллелепипеда будем называть $(k - 1)$-мерный параллелепипед $\Pi(a_1, \ldots, a_{k - 1})$, а его \textit{высотой} будем называть длину вектора $\ort_{\langle a_1, \ldots, a_{k - 1}\rangle}a_k$.
+\end{definition}
+
+\begin{definition}
+    Определим \textit{$k$-мерный объём} $\Vol_k$ параллелепипеда $\Pi(a_1, \ldots, a_k)$ в евклидовом пространстве индуктивно:
+    \begin{enumerate}[nolistsep]
+        \item Одномерный объём $\Vol_1\Pi(a_1) \vcentcolon = \abs{a_1}$ --- это длина вектора;
+        \item $\Vol_k\Pi(a_1, \ldots, a_k) \vcentcolon = \Vol_{k - 1}\Pi(a_1, \ldots, a_{k - 1}) \cdot \abs{\ort_{\langle a_1, \ldots, a_{k - 1}\rangle}a_k}$.
+    \end{enumerate}
+\end{definition}
+
+\begin{theorem}
+    $(\Vol_k\Pi(a_1, \ldots, a_k))^2 = \det G(a_1, \ldots, a_k)$.
+\end{theorem}
+
+\begin{proof}
+    Индукция по $k$. При $k = 1$, очевидно, $\abs{a_1}^2 = (a_1, a_1)$.
+
+    Пусть утверждение доказано для $\Vol_{k - 1}$, докажем его и для $\Vol_k$. Рассмотрим разложение $a_k = \pr_{\langle a_1, \ldots, a_{k - 1}\rangle}a_k + \ort_{\langle a_1, \ldots, a_{k - 1}\rangle}a_k$, где $\pr_{\langle a_1, \ldots, a_{k - 1}\rangle}a_k = \lambda_1a_1 + \ldots + \lambda_{k - 1}a_{k - 1}$, и обозначим $h \vcentcolon = \ort_{\langle a_1, \ldots, a_{k - 1}\rangle}a_k$. Тогда $(a_i, h) = 0$ при $i = 1, \ldots, k - 1$ и $(a_k, h) = (h, h)$. Мы имеем
+    \begin{multline*}\footnotesize
+        \det G = \det
+        \begin{pmatrix}
+            (a_1, a_1) & \ldots & (a_1, a_k)\\
+            \vdots & \ddots & \vdots\\
+            (a_k, a_1) & \ldots & (a_k, a_k)
+        \end{pmatrix} = \det
+        \begin{pmatrix}
+            (a_1, a_1) & \ldots & (a_1, a_{k - 1}) & (a_1, \lambda_1a_1 + \ldots + \lambda_{k - 1}a_{k - 1} + h)\\
+            \vdots & \ddots & \vdots & \vdots\\
+            (a_k, a_1) & \ldots & (a_k, a_{k - 1}) & (a_k, \lambda_1a_1 + \ldots + \lambda_{k - 1}a_{k - 1} + h)
+        \end{pmatrix} =\\\footnotesize = \lambda_1\underbrace{\det
+        \begin{pmatrix}
+            (a_1, a_1) & \ldots & (a_1, a_{k - 1}) & (a_1, a_1)\\
+            \vdots & \ddots & \vdots & \vdots\\
+            (a_k, a_1) & \ldots & (a_k, a_{k - 1}) & (a_k, a_1)
+        \end{pmatrix}}_{= 0} + \ldots + \lambda_{k - 1}\underbrace{\det
+        \begin{pmatrix}
+            (a_1, a_1) & \ldots & (a_1, a_{k - 1}) & (a_1, a_{k - 1})\\
+            \vdots & \ddots & \vdots & \vdots\\
+            (a_k, a_1) & \ldots & (a_k, a_{k - 1}) & (a_k, a_{k - 1})
+        \end{pmatrix}}_{= 0} +\\\footnotesize + \det
+        \begin{pmatrix}
+            (a_1, a_1) & \ldots & (a_1, a_{k - 1}) & (a_1, h)\\
+            \vdots & \ddots & \vdots & \vdots\\
+            (a_{k - 1}, a_1) & \ldots & (a_{k - 1}, a_{k - 1}) & (a_{k - 1}, h)\\
+            (a_k, a_1) & \ldots & (a_k, a_{k - 1}) & (a_k, h)
+        \end{pmatrix} = \det
+        \begin{pmatrix}
+            (a_1, a_1) & \ldots & (a_1, a_{k - 1}) & 0\\
+            \vdots & \ddots & \vdots & \vdots\\
+            (a_{k - 1}, a_1) & \ldots & (a_{k - 1}, a_{k - 1}) & 0\\
+            (a_k, a_1) & \ldots & (a_k, a_{k - 1}) & (h, h)
+        \end{pmatrix} =\\\footnotesize =
+        \begin{pmatrix}
+            (a_1, a_1) & \ldots & (a_1, a_{k - 1})\\
+            \vdots & \ddots & \vdots & \vdots\\
+            (a_{k - 1}, a_1) & \ldots & (a_{k - 1}, a_{k - 1})\\
+        \end{pmatrix} \cdot (h, h) = (\Vol_{k - 1}\Pi(a_1, \ldots, a_{k - 1}))^2\abs{h}^2 = (\Vol_k\Pi(a_1, \ldots, a_k))^2.
+    \end{multline*}
+\end{proof}
+
+\begin{corollary}
+    Векторы $a_1, \ldots, a_k$ линейно зависимы, если и только если $\det G(a_1, \ldots, a_k) = 0$.
+\end{corollary}
+
+\begin{proof}
+    $\Rightarrow$. Действительно, предположим, что векторы $a_1, \ldots, a_k$ линейно зависимы. Можно считать, что $a_k$ линейно выражается через $a_1, \ldots, a_{k - 1}$. Тогда $\ort_{\langle a_1, \ldots, a_{k - 1}\rangle}a_k = \bs{0}$ и, следовательно,
+    \[
+    \det G = (\Vol_k\Pi(a_1, \ldots, a_k))^2 = (\Vol_{k - 1}\Pi(a_1, \ldots, a_{k - 1}))^2\abs{\ort_{\langle a_1, \ldots, a_{k - 1}\rangle}a_k}^2 = 0.
+    \]
+    
+    $\Leftarrow$. Обратно, пусть $\det G = (\Vol_k\Pi(a_1, \ldots, a_k))^2 = 0$. Тогда, в силу индуктивного определения объёма, мы имеем $\Vol_i\Pi(a_1, \ldots, a_i) = 0$, а $\Vol_{i - 1}\Pi(a_1, \ldots, a_{i - 1}) \ne 0$ для некоторого $i$. Т.\,к. $\Vol_i\Pi(a_1, \ldots, a_i) = \Vol_{i - 1}\Pi(a_1, \ldots, a_{i - 1}) \cdot \abs{\ort_{\langle a_1, \ldots, a_{i - 1}\rangle}a_i}$, это означает, что $\ort_{\langle a_1, \ldots, a_{i - 1}\rangle}a_i = \bs{0}$, т.\,е. $a_i$ линейно выражается через $a_1, \ldots, a_{i - 1}$.
+\end{proof}
+
+\begin{corollary}[О геометрическом смысле определителя]
+    Пусь $\dim V = n$ и $A = (a^i_j)$ --- квадратная матрица из координат векторов $a_1, \ldots, a_n$ в некотором ортонормированном базисе. Тогда
+    \[
+        \Vol_n\Pi(a_1, \ldots, a_n) = \abs{\det A}.
+    \]
+\end{corollary}
+
+\begin{proof}
+    Из предложения 1 в вопросе 31 получаем
+    \[
+        (\Vol_n\Pi(a_1, \ldots, a_n))^2 = \det G = \det(A^tA) = (\det A)^2.
+    \]
+\end{proof}
+

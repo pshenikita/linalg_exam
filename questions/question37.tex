@@ -1,0 +1,62 @@
+\section{Линейные операторы в евклидовом пространстве. Оператор, сопряжённый линейному оператору, его матрица и свойства}
+
+Пусть $\A: V \to V$ --- линейный оператор в евклидовом пространстве $V$. В конце вопроса 7 мы определили сопряжённое линейное отображение $\A^\ast: V^\ast \to V^\ast$ по формуле
+\[
+    (\A^\ast\xi)(v) = \xi(\A v)\quad\forall \xi \in V^\ast, v \in V,
+\]
+
+При каноническом отождествлении $V \leftrightarrow V^\ast$, $u \leftrightarrow \xi_u = (u, \bs{\cdot})$ оператор $\A^\ast: V^\ast \to V^\ast$ переходит в оператор $\A^\ast: V \to V$, (который мы для простоты будем обозначать тем же символом $\A^\ast$), удовлетворяющий соотношению $\xi_{\A^\ast u} = \A^\ast\xi_u$ $\forall u \in V$.
+
+Чтобы установить связь между $\A: V \to V$ и $\A^\ast: V \to V$ непосредственно, вычислим значение линейных функций $\xi_{\A^\ast u}$ и $\A^\ast\xi_u$ на векторе $v \in V$:
+\[
+    \xi_{\A^\ast u}(v) = (\A^\ast u, v),\quad (\A^\ast\xi_u)(v) = \xi_u(\A v) = (u, \A v).
+\]
+
+Т.\,к. $\xi_{\A^\ast u} = \A^\ast\xi_u$, мы получаем $(\A^\ast u, v) = (u, \A v)$ $\forall u, v \in V$.
+
+\begin{definition}
+    Пусть $\A: V \to V$ --- оператор в евклидовом или эрмитовом пространстве $V$. Линейный оператор $\A^\ast: V \to V$, удовлетворяющий соотношению
+    \[
+        (\A^\ast u, v) = (u, \A v)
+    \]
+    для любых $u, v \in V$, называется \textit{сопряжённым} к $\A$.
+\end{definition}
+
+Соотношение $(\A^\ast u, v) = (u, \A v)$ определяет оператор $\A^\ast$ однозначно. Действительно, если $(\A^\prime u, v) = (u, \A v)$ для другого оператора $\A^\prime: V \to V$, то мы получаем $((\A^\ast - \A^\prime)u, v) = 0$ $\forall u, v \in V$. В частности, $((\A^\ast - \A^\prime)u, (\A^\ast - \A^\prime)u) = 0$, т.\,е. $(\A^\ast - \A^\prime)u = \bs{0}$ $\forall u \in V$. Следовательно, $\A^\ast = \A^\prime$.
+
+\begin{proposal}
+    Пусть $A$ --- матрица оператора $\A: V \to V$ в ортонормированном базисе евклидова (эрмитова) пространства $V$. Тогда матрица сопряжённого оператора $\A^\ast: V \to V$ в том же базисе есть $A^t$ (соответственно, $\overline{A}^t$).
+\end{proposal}
+
+\begin{proof}
+    Это сразу следует из предложения 5 в вопросе 7, но мы также дадим прямое доказательство. Пусть $e_1, \ldots, e_n$ --- ортонормированный базис, $A = (a^i_j)$ --- матрица оператора $\A: V \to V$ в этом базисе, а $\widetilde{A} - (\widetilde{a}^i_j)$ --- матрица оператора $\A^\ast: V \to V$. Тогда мы имеем
+    \begin{gather*}
+        (\A e_j, e_k) = (a^i_je_i, e_k) = \overline{a}^i_j(e_i, e_k) = \overline{a}^i_j\delta_{ik} = \overline{a}^i_k,\\
+        (e_j, \A^\ast e_k) = (e_j, \widetilde{a}^i_ke_i) = \widetilde{a}^i_k(e_j, e_i) = \widetilde{a}^i_k\delta_{ji} = \widetilde{a}^j_k.
+    \end{gather*}
+
+    Т.\,к. $(\A e_j, e_k) = (e_j, \A^\ast e_k)$, мы получаем $\overline{a}^k_j = \widetilde{a}^j_k$ или $\overline{A}^t = \widetilde{A}$.
+\end{proof}
+
+\begin{proposal}
+    Имеют место следующие равенства:
+    \begin{enumerate}[nolistsep]
+        \item $(\A + \B)^\ast = \A^\ast + \B^\ast$, $(\lambda\A)^\ast = \overline{\lambda}\A^\ast$;
+        \item $(\A\B)^\ast = \B^\ast\A^\ast$.
+    \end{enumerate}
+\end{proposal}
+
+\begin{proof}
+    Это следует из свойств операции транспонирования матриц, благодаря предыдущему предложению.
+\end{proof}
+
+Докажем ключевую лемму, которая нам не раз понадобится в дальнейшем.
+
+\begin{lemma}[Важная]
+    Если $W \subset V$ --- инвариантное подпространство относительно $\A$, то $W^\perp$ --- инвариантное подпространство относительно $\A^\ast$.
+\end{lemma}
+
+\begin{proof}
+    Пусть $u \in W^\perp$. Тогда $\forall w \in W$ имеем $(\A^\ast u, w) = (u, \A w) = 0$ т.\,к. $\A w \in W$, а $u \in W^\perp$. Следовательно, $\A^\ast u \in W^\perp$.
+\end{proof}
+

@@ -1,0 +1,39 @@
+\section{Собственные подпространства. Неравенство между размерностью собственного подпространства и кратностью корня характеристического многочлена}
+
+\begin{proposal}
+    Все собственные векторы, отвечающие собственным значениям $\lambda$, и вектор $\bs{0}$ образуют подпространство, которое совпадает с $\Ker(\A - \lambda \cdot \id)$.
+\end{proposal}
+
+\begin{proof}
+    По определению ядра, равенство $\A v = \lambda v$ имеет место тогда и только тогда, когда $v \in \Ker(\A - \lambda \cdot \id)$.
+\end{proof}
+
+\begin{definition}
+    Пусть $\lambda$ --- собственное значение для оператора $\A$. Подпространство $V_\lambda \vcentcolon = \Ker(\A - \lambda \cdot \id)$ называется \textit{собственным подпространством}, соответствующим $\lambda$.
+\end{definition}
+
+\begin{proof}
+    Действительно, если $v \in V_\lambda$, то $\A v = \lambda v \in V_\lambda$.
+\end{proof}
+
+\begin{proposal}
+    Размерность собственного подпространства $V_\lambda$ не превосходит кратности $\lambda$ как корня характеристического многочлена.
+\end{proposal}
+
+\begin{proof}
+    Пусть $\dim V_\lambda = k$. Выберем базис $e_1, \ldots, e_k$ в пространстве $V_\lambda$ и дополним его до базиса в $V$. Т.\,к. $\A e_i = \lambda e_i$ при $i = 1, \ldots, k$, матрица оператора $\A$ в выбранном базисе имеет вид
+    $
+    A = 
+    \left(
+    \begin{array}{c c c | c}
+        \lambda & & 0 & \\
+         & \ddots & & \ast\\
+        0 & & \lambda & \\
+        \hline
+         & & & \vspace{-4mm}\\
+         & 0 & & \widetilde{A}
+    \end{array}
+    \right)
+    $. Тогда $\chi_\A(t) = \det(A - t \cdot E) = (\lambda - t)^k\det(\widetilde{A} - t \cdot E) = (\lambda - t)^k\chi_{\widetilde{\A}}(t)$, где $\widetilde{\A}$ --- фактор-оператор. Отсюда вытекает, что кратность корня $\lambda$ не меньше $k = \dim V_\lambda$.
+\end{proof}
+

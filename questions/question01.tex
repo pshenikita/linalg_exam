@@ -1,0 +1,242 @@
+\section{Векторные пространства. Линейная зависимость и независимость векторов. Базис, размерность. Примеры}
+
+\begin{definition}
+    \textit{Линейным} (или \textit{векторным}) \textit{пространством} над полем $\F$ называется множество $V$ с заданными на нём операциями \textit{сложения} $+: (u, v) \in V \times V \mapsto (u + v) \in V$ и \textit{умножения} элементов $V$ на элементы $\F$ $\bs{\cdot}: (\lambda, v) \in \F \times V \mapsto (\lambda \cdot v) \in V$, удовлетворяющие следующим аксиомам:
+    \begin{enumerate}
+        \item $v + u = u + v$ $\forall u, v \in V$;
+        \item $(u + v) + w = u + (v + w)$ $\forall u, v, w \in V$;
+        \item $\exists \bs{0} \in V: v + \bs{0} = v$ $\forall v \in V$;\hspace{2.9cm}\smash{\raisebox{.5\dimexpr\baselineskip+\itemsep+\parskip}{$\left.\rule{0pt}{.5\dimexpr4\baselineskip+3\itemsep+3\parskip}\right\}\text{$(V, +)$ --- абелева группа}$}}
+        \item $\forall v \in V\;\exists (-v) \in V: v + (-v) = \bs{0}$;
+        \item $\lambda \cdot (u + v) = \lambda \cdot u + \lambda \cdot v$ $\forall u, v \in V$, $\forall \lambda \in \F$;
+        \item $(\lambda + \mu) \cdot v = \lambda \cdot v + \mu \cdot v$ $\forall v \in V$, $\forall \lambda, \mu \in \F$;
+        \item $\lambda \cdot (\mu \cdot v) = (\lambda\mu) \cdot v$ $\forall v \in V$, $\forall \lambda, \mu \in \F$;\hspace{1cm}\smash{\raisebox{.5\dimexpr\baselineskip+\itemsep+\parskip}{$\left.\rule{0pt}{.5\dimexpr4\baselineskip+3\itemsep+3\parskip}\right\}\text{$\F$ линейно действует на $V$}$}}
+        \item $1 \cdot v = v$ $\forall v \in V$.
+    \end{enumerate}
+\end{definition}
+
+\begin{definition}
+    Элементы множества $V$ называются \textit{векторами}, элемент $\bs{0}$ называется \textit{нулевым вектором}, а элемент $(-v)$ называется \textit{противоположным} к $v$. Элементы $\F$ называют \textit{скалярами}.
+\end{definition}
+
+\begin{proposal}
+    \begin{enumerate}[nolistsep]
+        \item $\bs{0} \cdot v = \lambda \cdot \bs{0} = \bs{0}$ $\forall v \in V$, $\forall \lambda \in \F$;
+        \item $(-1) \cdot v = -v$ $\forall v \in V$;
+        \item $\lambda v = \bs{0} \Rightarrow \lambda = 0$ или $v = \bs{0}$.
+    \end{enumerate}
+\end{proposal}
+
+\begin{proof}
+    \begin{enumerate}[nolistsep]
+        \item $0 \cdot v + 0 \cdot v = (0 + 0) \cdot v = 0 \cdot v \Rightarrow 0 \cdot v = \bs{0}$. Аналогично, $\lambda \cdot \bs{0} + \lambda \cdot \bs{0} = \lambda(\bs{0} + \bs{0}) = \lambda \cdot \bs{0} \Rightarrow \lambda \cdot \bs{0} = \bs{0}$;
+        \item $v + (-1) \cdot v = 1 \cdot v + (-1) \cdot v = (1 - 1) \cdot v = 0 \cdot v = \bs{0} \Rightarrow -v = (-1) \cdot v$.
+        \item $\lambda \ne 0 \Rightarrow \bs{0} = \lambda^{-1}\lambda v = v$.
+    \end{enumerate}
+\end{proof}
+
+\begin{example}
+    \begin{enumerate}
+        \item Множество $\{\bs{0}\}$ из одного элемента является линейным пространством над любым полем.
+        \item Множества геометрических векторов на прямой, плоскости или пространстве являются линейными пространствами над полем $\R$.
+        \item Поле $\F$ является векторным пространством над самим собой.
+        \item Поле $\C$ является линейным пространством над полем $\R$, а поле $\R$ является линейным пространством над полем $\Q$.
+        \item Пусть
+            $\ds
+                \F^n \vcentcolon =
+                \left\{
+                    \begin{pmatrix}
+                        x_1\\
+                        x_2\\
+                        \vdots\\
+                        x_n
+                    \end{pmatrix} : x_i \in \F
+                \right\}
+            $
+            --- множество столбцов фиксированной длины $n$ из элементов поля $\F$. Операции покоординатного сложения и умножения на скаляры
+            \[
+                \begin{pmatrix}
+                    x_1\\
+                    x_2\\
+                    \vdots\\
+                    x_n
+                \end{pmatrix} +
+                \begin{pmatrix}
+                    y_1\\
+                    y_2\\
+                    \vdots\\
+                    y_n
+                \end{pmatrix} \vcentcolon=
+                \begin{pmatrix}
+                    x_1 + y_1\\
+                    x_2 + y_2\\
+                    \vdots\\
+                    x_n + y_n
+                \end{pmatrix},\quad
+                \lambda\cdot
+                \begin{pmatrix}
+                    x_1\\
+                    x_2\\
+                    \vdots\\
+                    x_n
+                \end{pmatrix} \vcentcolon=
+                \begin{pmatrix}
+                    \lambda x_1\\
+                    \lambda x_2\\
+                    \vdots\\
+                    \lambda x_n
+                \end{pmatrix}.
+            \]
+            задают на $\F^n$ структуру линейного пространства над $\F$. Его часто называют \textit{координатным}.
+    \end{enumerate}
+\end{example}
+
+Пусть $V$ --- линейное пространство над полем $\F$.
+
+\begin{definition}
+    \textit{Линейной комбинацией} системы векторов $\{v_i: i \in I\}$ называется формальная сумма вида $\sum\limits_{i \in I}\lambda_iv_i$, в которой лишь конечное число скаляров $\lambda_i$ отличны от нуля.
+\end{definition}
+
+\begin{remark}
+    Линейную комбинацию системы $\{v_i : i \in I\}$ можно также определить как функцию $i \in I \mapsto \lambda_i \in \F$, которая принимает ненулевое значение только на конечном числе индексов.
+\end{remark}
+
+\begin{definition}
+    Линейная комбинация $\sum\limits_{i \in I}\lambda_iv_i$ называется \textit{тривиальной}, если $\lambda_i = 0$ $\forall i \in I$.
+\end{definition}
+
+\begin{definition}
+    Система векторов $\{v_i : i \in I\}$ называется \textit{линейно зависимой}, если существует нетривиальная линейная комбинация, представляющая нулевой вектор. В противном случае система называется \textit{линейно независимой}.
+\end{definition}
+
+\begin{lemma}
+    Если система векторов $\{v_i : i \in I\}$ линейно зависима, то в ней найдётся вектор, представленный линейной комбинацией всех остальных.
+\end{lemma}
+
+\begin{proof}
+    Пусть $\sum\limits_{i \in I}\lambda_iv_i = \bs{0}$, причём $\exists\lambda_j \ne 0$. Тогда $\ds v_j = \sum_{i \in I \setminus \{j\}}\frac{-\lambda_i}{\lambda_j}v_i$.
+\end{proof}
+
+\begin{definition}
+    \textit{Базисом} пространства $V$ называется линейно независимая система $\{v_i : i \in I\}$, порождающая всё пространство $V$, т.\,е. такая, что каждый вектор из $V$ представляется какой-то линейной комбинацией системы $\{v_i : i \in I\}$.
+\end{definition}
+
+\begin{definition}
+    Линейное пространство называется \textit{конечномерным}, если в нём существует базис, состоящий из конечного числа векторов. В противном случае пространство называется \textit{бесконечномерным}.
+\end{definition}
+
+\begin{proposal}
+    Представление любого вектора линейного пространства в виде линейной комбинации базисных векторов единственно.
+\end{proposal}
+
+\begin{proof}
+    Действительно, если $v = \sum\limits_{i \in I}\lambda_iv_i = \sum\limits_{i \in I}\mu_iv_i$ (где $\{v_i : i \in I\}$ --- базис), то получаем $\bs{0} = \sum\limits_{i \in I}(\lambda_i - \mu_i)v_i$. Из линейной независимости базиса, линейная комбинация в правой части тривиальна и $\lambda_i = \mu_i$ $\forall i \in I$ и два представления $v$ совпадают.
+\end{proof}
+
+\begin{definition}
+    \textit{Линейная оболочка} системы векторов $\langle v_i : i \in I \rangle$ есть множество всевозможных линейных комбинаций $\sum\limits_{i \in I}\lambda_iv_i$.
+\end{definition}
+
+\begin{theorem}
+    В конечномерном пространстве все базисы состоят из одного числа элементов.
+\end{theorem}
+
+Доказательство этой теоремы будет опираться на следующую лемму.
+
+\begin{lemma}[О линейной зависимости]
+    Пусть $e_1, \ldots, e_m$ и $f_1, \ldots, f_n$ --- две (конечные) линейно независимые системы. Тогда $\{f_1, \ldots, f_n\} \subseteq \langle e_1, \ldots, e_m\rangle \Rightarrow n \leqslant m$.
+\end{lemma}
+
+\begin{proof}
+    Пусть $f_j = a_{1j}e_1 + \ldots + a_{mj}e_m$, $a_{ij} \in \F$, $j = 1, \ldots, n$. Т.\,к. $f_1, \ldots, f_n$ --- линейно независимая система векторов, то $x_1f_1 + \ldots + x_nf_n = \bs{0} \Leftrightarrow x_1 = \ldots = x_n = 0$. Подставляя сюда выражения $f_i$ через $e_1, \ldots, e_m$, получаем
+    \begin{multline*}
+        \bs{0} = x_1(a_{11}e_1 + \ldots + a_{m1}e_m) + \ldots x_n(a_{1n}e_1 + \ldots + a_{mn}e_m) =\\ = (a_{11}x_1 + \ldots + a_{1n}x_n)e_1 + \ldots + (a_{m1}x_1 + \ldots + a_{mn}x_n)e_m.
+    \end{multline*}
+    Т.\,к. $e_1, \ldots, e_m$ --- линейно независимая система, то последнее равенство равносильно
+    \[
+        \begin{cases}
+            a_{11}x_1 + \ldots + a_{1n}x_n = 0,\\
+            \dotfill\\
+            a_{m1}x_1 + \ldots + a_{mn}x_n = 0.
+        \end{cases}
+    \]
+
+    Если $n > m$, то эта система имеет ненулевое решение, что противоречит линейной независимости системы $f_1, \ldots, f_n$.
+\end{proof}
+
+Теперь докажем теорему 1:
+
+\begin{proof}
+    Пусть $V$ --- конечномерное пространство. По определению, в $V$ существует базис $e_1, \ldots, e_m$. Пусть $\{f_i : i \in I\}$ --- другой базис. Если этот базис бесконечен, то в нём содержится конечная линейно незавсимая система векторов $f_1, \ldots, f_n$, где $n > m$. При этом, т.\,к. $e_1, \ldots, e_m$ --- базис, мы имеем $\{f_1, \ldots, f_n\} \subseteq \langle e_1, \ldots, e_m\rangle$, что противоречит лемме о линейной зависимости. Следовательно, базис $\{f_i : i \in I\}$ конечен, т.\,е. имеет вид $f_1, \ldots, f_n$. Тогда $\{f_1, \ldots, f_n\} \subseteq \langle e_1, \ldots, e_m \rangle$ и $\{e_1, \ldots, e_m\} \subseteq \langle f_1, \ldots, f_m\rangle$. Отсюда $n = m$.
+\end{proof}
+
+\begin{lemma}
+    В конечномерном пространстве любую линейно независимую систему можно дополнить до базиса.
+\end{lemma}
+
+\begin{proof}
+    Пусть $\{e_1, \ldots, e_k\}$ --- конечная подсистема в $V$. Тогда, если эта система максимальна по включению, то она базис. Иначе существует $e_{k + 1} \in V$ такой, что система $\{e_1, \ldots, e_k, e_{k + 1}\}$ линейно независима. Продолжная процесс далее, за конечное число шагов получим базис (в силу конечномерности пространства $V$).
+\end{proof}
+
+\begin{remark}
+    Ниже изложен удобный алгоритм дополнения линейно независимой системы до базиса. Пусть 
+    \[
+        u_1 = 
+        \begin{pmatrix}
+            u_{11}\\
+            \vdots\\
+            u_{1n}
+        \end{pmatrix},\quad
+        u_2 = 
+        \begin{pmatrix}
+            u_{21}\\
+            \vdots\\
+            u_{2n}
+        \end{pmatrix},\quad\ldots,\quad
+        u_m = 
+        \begin{pmatrix}
+            u_{m1}\\
+            \vdots\\
+            u_{mn}
+        \end{pmatrix}
+    \] линейно независимы. Обозначим
+    \[
+        U = 
+        \begin{pmatrix}
+            u_{11} & u_{21} & \ldots & u_{m1}\\
+            \vdots & \vdots & \ddots & \vdots\\
+            u_{1n} & u_{2n} & \ldots & u_{mn}\\
+        \end{pmatrix}.
+    \]
+    Отметим, что $\rk U = m$, а $\rk(U \mid E) = n$. Так что нужно привести матрицу $(U \mid E)$ элементарными преобразованиями к ступенчатому виду и дополнить столбцы матрицы $U$ единичными столбцами, вошедшими в базис матрицы $(U \mid E)$.
+\end{remark}
+
+\begin{lemma}
+    Всякое конечномерное линейное пространство $V$ обладает базисом. Более точно, из всякого конечного порождающего множества $S \subset V$ можно выбрать базис пространства $V$.
+\end{lemma}
+
+\begin{proof}
+    Если множество $S$ линейно зависимо, то по лемме 1 в нём найдётся вектор, линейно выражающийся через остальные. Выкидывая этот вектор, мы получаем порождающее множество из меньшего числа векторов. Продолжая так дальше, мы в конце концов получим линейно независимое порождающее множество, т.\,е. базис.
+\end{proof}
+
+\begin{remark}
+    Чтобы сделать это на практике, выписываем векторы в матрицу по столбцам, приводим её к ступенчатому виду и те столбцы, в которых стоят лидеры, будут базисными.
+\end{remark}
+
+\begin{definition}
+    \textit{Размерностью} конечномерного линейного пространства $V$ (обозначается $\dim V$) называется число элементов в базисе $V$. Если $V$ бесконечномерно, то пишут $\dim V = \infty$.
+\end{definition}
+
+\begin{lemma}[Свойство монотонности размерности]
+    Подпространство $W$ конечномерного пространства $V$ конечномерно, причём $\dim W \leqslant \dim V$ и равенство достигается только при $W = V$.
+\end{lemma}
+
+\begin{proof}
+    Пусть $\dim V = m$ и $e_1, \ldots, e_m$ --- базис пространства $V$. Если $\dim W > m$, то в $W$ найдётся линейно независимая система $f_1, \ldots, f_n$ с $n > m$. Причём $\{f_1, \ldots, f_n\} \subseteq \langle e_1, \ldots, e_m\rangle = V$, что противоречит лемме о линейной зависимости. Следовательно, $\dim W \leqslant \dim V$.
+
+    Пусть $\dim W = \dim V = m$ и пусть $f_1, \ldots, f_m$ --- базис в $W$. Тогда каждый вектор линейно выражается через $f_1, \ldots, f_m$, так как иначе получили бы линейно независимую систему $f_1, \ldots, f_m, e_i$ из $m + 1$ векторов в $V$, что противоречит теореме 1. Следовательно, любой вектор из $V$ лежит в $\langle f_1, \ldots, f_m\rangle = W$, т.\,е. $V \subseteq W$, а обратное включение верно из условия. Итак, получаем $V = W$.
+\end{proof}
+
+\begin{remark}
+    В нулевом пространстве $\{\bs{0}\}$ базисом естественно считать пустое множество $\varnothing$. Поэтому $\dim\{\bs{0}\} = 0$.
+\end{remark}
+

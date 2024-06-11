@@ -1,0 +1,104 @@
+\section{Факторпространство, его размерность. Коразмерность. Связь с решениями неоднородной системы линейных уравнений}
+
+Пусть $V$ --- линейное пространство, а $W \subseteq V$ --- его подпространство.
+
+\begin{definition}
+    \textit{Классом смежности} вектора $v \in V$ по подпространству $W$ называется множество $v + W \vcentcolon = \{v + w : w \in W\}$.
+\end{definition}
+
+\begin{lemma}
+    Равенство $v_1 + W = v_2 + W$ имеет место тогда и только тогда, когда $v_1 - v_2 \in W$.
+\end{lemma}
+
+\begin{proof}
+    Пусть $v_1 + W = v_2 + W$. Тогда $v_1 \in v_1 + W = v_2 + W$, значит $\exists w \in W: v_1 = v_2 + w$. Следовательно, $v_1 - v_2 = w \in W$. Обратно, пусть $v \vcentcolon = v_1 - v_2 \in W$. Докажем, что $v_1 + W \subseteq v_2 + W$. Возьмём произвольный вектор $u \in v_1 + W$. Тогда $u = v_1 + w$ для некоторого $w \in W$. Мы имеем $u = v_1 + w = v_2 + (v + w)$, где $v + w \in W$. Следовательно, $u \in v_2 + W$ и $v_1 + W \subseteq v_2 + W$. Обратное включение доказывается аналогично.
+\end{proof}
+
+\begin{proposal}
+    Отношение $v_1 \sim v_2 \overset{\mathrm{def}}{\Longleftrightarrow} u_1 - u_2 \in U$ задаёт отношение эквивалентности на $V$.
+\end{proposal}
+
+\begin{proof}
+    Совсем несложно проверяются все аксиомы.
+\end{proof}
+
+\begin{definition}
+    \textit{Факторпространством} линейного пространства $V$ по подпространству $W$ называется множество $V / W \vcentcolon = \{v + W : v \in V\}$ с операциями сложения и умножения на скаляры:
+    \[
+        (u + W) + (v + W) \vcentcolon = (u + v) + W,\quad \lambda \cdot (v + W) \vcentcolon = \lambda v + W.
+    \]
+\end{definition}
+
+\begin{proposal}
+    Приведённые выше операции определены на классах смежности корректно и задают на $V / W$ структуру линейного пространства.
+\end{proposal}
+
+\begin{proof}
+    Проверим корректность определения операций, т.\,е. независимость результата операции от выбора вектора $v$ в смежном классе $v + W$. Докажем для сложения. Если $u_1 + W = u_2 + W$ и $v_1 + W = v_2 + W$, то $u \vcentcolon = u_1 - u_2 \in W$ и $v \vcentcolon = v_1 - v_2 \in W$ в силу предыдущей леммы. Следовательно,
+    \begin{multline*}
+        (u_1 + W) + (v_1 + W) = (u_1 + v_1) + W = (u_2 + v_2) + (u + v) + W =\\ = (u_2 + v_2) + W = (u_2 + W) + (v_2 + W).
+    \end{multline*}
+
+    Корректность определения умножения на скаляры проверяется аналогично. Теперь докажем, что $V / W$ --- линейное пространство. Свойства 1 и 2 сразу следуют из определения. Нулём является $\bs{0} + W = W$, а противоположным к $v + W$ является $(-v) + W$, Проверим свойство 5:
+    \begin{multline*}
+        \lambda \cdot \br{(u + W) + (v + W)} = \lambda \cdot \br{(u + v) + W} = (\lambda u + \lambda v) + W =\\ = (\lambda u + W) + (\lambda v + W) = \lambda(u + W) + \lambda(v + W).
+    \end{multline*}
+
+    Оставшиеся свойства 6-8 проверяются аналогично.
+\end{proof}
+
+\begin{definition}
+    \textit{Коразмерностью} подпространства $W$ линейного пространства $V$ (обозначается через $\codim W$) называется $\dim V / W$.
+\end{definition}
+
+\begin{theorem}
+    $\codim W = \dim V - \dim W$.
+\end{theorem}
+
+\begin{proof}
+    Пусть $\dim V = n$, $\dim W = k$ и $e_1, \ldots, e_k$ --- базис в $W$. Дополним его до базиса $e_1, \ldots, e_k, e_{k + 1}, \ldots, e_n$ в $V$. Докажем, что классы $e_{k + 1} + W, \ldots, e_n + W$ образуют базис в $V / W$. Вначале покажем, что они линейно независимы. Пусть $\lambda_{k + 1}(e_{k + 1} + W) + \ldots + \lambda_n(e_n + W) = \bs{0} + W$. Тогда $(\lambda_{k + 1}e_{k + 1} + \ldots + \lambda_ne_n) + W = \bs{0} + W$, т.\,е. $v \vcentcolon = \lambda_{k + 1}e_{k + 1} + \ldots + \lambda_ne_n \in W$. Т.\,к. $e_1, \ldots, e_k$ --- базис в $W$, то можем записать $v = \lambda_1e_1 + \ldots + \lambda_ke_k$. Тогда получаем
+    \[
+        \lambda_1e_1 + \ldots + \lambda_ke_k - \lambda_{k + 1}e_{k + 1} - \ldots - \lambda_ne_n = \bs{0}.
+    \]
+
+    Т.\,к. $e_1, \ldots, e_n$ --- базис в $V$, то $\lambda_1 = \ldots = \lambda_{k + 1} = \ldots = \lambda_n = 0$. Значит, классы $e_{k + 1} + W, \ldots, e_n + W$ линейно независимы. Осталось доказать, что эти классы порождают всё пространство. Возьмём произвольный вектор $v + W \in V / W$. Разложим вектор $v$ по базису в $V$: $v = \lambda_1e_1 + \ldots + \lambda_ke_k + \lambda_{k + 1}e_{k + 1} + \ldots + \lambda_ne_n$. Тогда
+    \begin{multline*}
+        v + W = (\lambda_{k + 1}e_{k + 1} + \ldots + \lambda_ne_n) + (\lambda_1e_1 + \ldots + \lambda_ke_k) + W =\\ = (\lambda_{k + 1}e_{k + 1} + \ldots + \lambda_ne_n) + W = \lambda_{k + 1}(e_{k + 1} + W) + \ldots + \lambda_n(e_n + W).
+    \end{multline*}
+    Итак, в базисе $V / W$ ровно $n - k$ векторов.
+\end{proof}
+
+\begin{proposal}
+    Совокупность всех решений произвольной совместной системы линейных уравнений есть сумма какого-либо одного её решения и подпространства решений однородной системы линейных уравнений с той же матрицей коэффициентов.
+\end{proposal}
+
+\begin{proof}
+    Пусть $u = (u_1, u_2, \ldots, u_n)^t \in \F^n$ --- частное решение неоднородной СЛУ
+    \[
+        \begin{cases}
+            a_{11}x_1 + a_{12}x_2 + \ldots + a_{1n}x_n = b_1,\\
+            a_{21}x_1 + a_{22}x_2 + \ldots + a_{2n}x_n = b_2,\\
+            \dotfill\\
+            a_{m1}x_1 + a_{m2}x_2 + \ldots + a_{mn}x_n = b_m.\\
+        \end{cases}
+    \]
+
+    Пусть также $v = (v_1, v_2, \ldots, v_n)^t \in \F^n$ --- произвольное решение ассоциированной однородной системы
+    \[
+        \begin{cases}
+            a_{11}x_1 + a_{12}x_2 + \ldots + a_{1n}x_n = 0,\\
+            a_{21}x_1 + a_{22}x_2 + \ldots + a_{2n}x_n = 0,\\
+            \dotfill\\
+            a_{m1}x_1 + a_{m2}x_2 + \ldots + a_{mn}x_n = 0.\\
+        \end{cases}
+    \]
+    Тогда сумма $u + v$ является решением первой системы. Действительно,
+    \begin{multline*}
+        a_{i1}(u_1 + v_1) + a_{i2}(u_2 + v_2) + \ldots + a_{in}(u_n + v_n) =\\ = \underbrace{a_{i1}u_1 + a_{i2}u_2 + \ldots + a_{in}u_n}_{= b_i} + \underbrace{a_{i1}v_1 + a_{i2}v_2 + \ldots + a_{in}v_n}_{= 0} = b_i.
+    \end{multline*}
+
+    Обратно, если $u^\prime$ --- произвольное решение неоднородной СЛУ, то $v = u^\prime - u$ является решением ассоциированной однородной системы (проверяется так же).
+\end{proof}
+
+Связь определения факторпространства со структурой решений неоднородной СЛУ заключается в том, что они <<похожи>>. Я уточню это позже у Игоря Андреевича.
+

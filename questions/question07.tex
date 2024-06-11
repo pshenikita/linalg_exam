@@ -1,0 +1,164 @@
+\section{Линейные функции на векторном пространстве, их ядра. Изменение коэффициентов линейной формы при замене базиса. Сопряжённое пространство $V^\ast$, дуальный базис. Канонический изоморфизм $V \simeq V^{\ast\ast}$}
+
+Сначала см. вопрос 8.
+
+\begin{definition}
+    Линейное отображение $f: V \to \F$ из пространства $V$ над полем $\F$ в поле $\F$ (одномерное векторное пространство) называется \textit{линейной функцией} (\textit{функционалом}).
+\end{definition}
+
+\begin{definition}
+    $V^\ast \vcentcolon = \Hom_\F(V, \F)$ --- \textit{двойственное} (\textit{сопряжённое}, \textit{дуальное}) пространство к $V$.
+\end{definition}
+
+Пусть $e_1, \ldots, e_n$ --- базис в $V$. Значение линейной функции $\xi \in V^\ast$ на любом векторе $x = x^ie_i \in V$ определяется её значениями на базисных векторах, т.\,к. $\xi(x) = \xi(x^ie_i) = x^i\xi(e_i)$. Определим линейные функции $\varepsilon^1, \ldots, \varepsilon^n \in V^\ast$ по правилу $\varepsilon^i(e_j) = \delta^i_j$. Тогда для любого вектора $x = x^je_j$ мы имеем
+\[
+    \varepsilon^i(x) = \varepsilon^i(x^je_j) = x^j\varepsilon^i(e_j) = x^j\delta^i_j = x^i.
+\]
+
+\begin{definition}
+    В связи с этим функции $\varepsilon^1, \ldots, \varepsilon^n$ часто называют \textit{координатными функциями}.
+\end{definition}
+
+\begin{proposal}
+    Линейные функции $\varepsilon^1, \ldots, \varepsilon^n$ образуют базис в $V^\ast$.
+\end{proposal}
+
+\begin{proof}
+    Линейная независимость: пусть $x_1\varepsilon^1 + \ldots + x_n\varepsilon^n = \bs{0}$. Это равенство означает, что линейная функция $\xi \vcentcolon x_i\varepsilon^i$ равна нулю на любом векторе из $V$. Вычислим её на векторе $e_j$:
+    \[
+        \bs{0} = \xi(e_j) = x_i\varepsilon^i(e_j) = x_i\varepsilon^i(e_j) = x_i\delta^i_j = x_j.
+    \]
+    Итак, $x_1 = \ldots = x_n = 0$, а значит, $\varepsilon^1, \ldots, \varepsilon^n$ линейное независимы.
+
+    Теперь проверим, что $\varepsilon^1, \ldots, \varepsilon^n$ порождают всё пространство $V^\ast$. Мы утверждаем, что любая линейная функция $\xi$ представляется в виде линейной комбинации $\xi = \xi_i\varepsilon^i$, где $\xi_i = \xi(e_i)$. Действительно, для любого вектора $x = x^je_j \in V$ мы имеем
+    \[
+        \xi_i\varepsilon^i(x) = \xi_i x^i = \xi(e_i)x^i = \xi(x^ie_i) = \xi(x).
+    \]
+    Таким образом, $\varepsilon^1, \ldots, \varepsilon^n$ --- базис в $V^\ast$.
+\end{proof}
+
+\begin{definition}
+    Базис $\varepsilon^1, \ldots, \varepsilon^n$ пространства $V^\ast$ называется \textit{двойственным} (\textit{сопряжённым}, \textit{дуальным}) базисом к $e_1, \ldots, e_n$.
+\end{definition}
+
+\begin{corollary}
+    $\dim V = \dim V^\ast \Rightarrow V \simeq V^\ast$.
+\end{corollary}
+
+Пусть теперь $e_{1^\prime}, \ldots, e_{n^\prime}$ --- другой базис пространства $V$ и $C = (c^i_{i^\prime})$ --- матрица перехода от старого базиса к новому, т.\,е. $e_{i^\prime} = c^i_{i^\prime}e_i$. Рассмотрим двойственные базисы $\varepsilon^1, \ldots, \varepsilon^n$ и $\varepsilon^{1^\prime}, \ldots, \varepsilon^{n^\prime}$.
+
+\begin{proposal}
+    Матрица перехода от $\varepsilon^1, \ldots, \varepsilon^n$ к $\varepsilon^{1^\prime}, \ldots, \varepsilon^{n^\prime}$ есть $(C^{-1})^t$
+\end{proposal}
+
+\begin{proof}
+    Для любого вектора $x = x^ie_i = x^{i^\prime}e_{i^\prime}$ мы имеем $\varepsilon^i(x) = x^i = c^i_{i^\prime}x^{i^\prime} = c^i_{i^\prime}\varepsilon^{i^\prime}(x)$. Следовательно, $\varepsilon^i = c^i_{i^\prime}\varepsilon^{i^\prime}$, что эквивалентно матричному соотношению
+    \[
+        \begin{pmatrix}
+            \varepsilon^1\\
+            \vdots\\
+            \varepsilon^n
+        \end{pmatrix} = C \cdot
+        \begin{pmatrix}
+            \varepsilon^{1^\prime}\\
+            \vdots\\
+            \varepsilon^{n^\prime}
+        \end{pmatrix}
+    \]
+    или $(\varepsilon^{1^\prime}, \ldots, \varepsilon^{n^\prime}) = (\varepsilon^1, \ldots, \varepsilon^n) \cdot (C^{-1})^t$.
+\end{proof}
+
+Для построения изоморфизма между пространствами $V$ и $V^\ast$ нам необходимо выбрать базис в $V$ (и двойственный ему базис в $V^\ast$). Разные базисы дают разные изоморфизмы. Для бесконечномерных пространств ситуация иная: пространства $V$ и $V^\ast$ \textbf{никогда не изоморфны}, пространство $V^\ast$ всегда <<больше>>. Проиллюстрируем это на примере. Обозначим через $\F^\infty$ пространство финитных последовательностей из элементов поля $\F$, а через $\widehat{F}^\infty$ --- пространство всех бесконечных последовательностей элементов поля $\F$.
+
+\begin{proposal}
+    $(\F^\infty)^\ast \simeq \widehat{\F}^\infty$.
+\end{proposal}
+
+\begin{proof}
+    Возьмём в пространстве $\F^\infty$ базис $\{e_i\}_{i = 1}^\infty$, $e_i = (\overbrace{0, \ldots, 0}^{i - 1}, 1, 0, \ldots)$. Рассмотрим отображение $\A: (\F^\infty)^\ast \to \widehat{\F}^\ast$, $f \mapsto (f(e_1), f(e_2), \ldots)$, которое линейной функции $f \in (\F^\infty)^\ast$ ставит в соответствие последовательность её значений на базисных векторах. Это отображение очевидно линейно. Кроме того, оно биективно: обратное отображение задаётся формулой $\A^{-1}(x_1, x_2, \ldots) = f \in (\F^\infty)^\ast$, где $f(e_i) = x_i$. Т.\,к. любой элемент $y \in \F^\infty$ есть (конечная) линейная комбинация элементов $e_i$, то линейная функция $f$ однозначно восстанавливаются по её значениям на базисных векторах
+\end{proof}
+
+\begin{proposal}
+    $\Z_2^\infty \not\simeq \widehat{\Z}_2^\infty$.
+\end{proposal}
+
+\begin{proof}
+    $\Z_2^\infty$ можно отождествить с множеством рациональных чисел на отрезке $[0; 1]$ в двоичной записи, а $\widehat{\Z}_2^\infty$ --- с множеством вещественных чисел на $[0; 1]$ в двоичной записи. Поэтому биекции между этими множествами быть не может.
+\end{proof}
+
+\begin{corollary}
+    $\Z_2^\infty \not\simeq (\Z_2^\infty)^\ast$.
+\end{corollary}
+
+\begin{definition}
+    $V^{\ast\ast} \vcentcolon= (V^\ast)^\ast$ --- \textit{второе сопряжённое пространство}.
+\end{definition}
+
+\begin{theorem}
+    Пусть $V$ --- конечномерное линейное пространство. Отображение $\varphi: x \in V \mapsto \varphi_x \in V^{\ast\ast}$, где $\varphi_x(\xi) \vcentcolon = \xi(x)$ для $\xi \in V^\ast$, является изоморфизмом.
+\end{theorem}
+
+\begin{proof}
+    Из определения линейных функций следует, что $\varphi_{x + y} = \varphi_x + \varphi_y$ и $\varphi_{\lambda x} = \lambda\varphi_x$. Остаётся проверить, что отображение $x \mapsto \varphi_x$ биективное. Пусть $e_1, \ldots, e_n$ --- базис пространства $V$ и $\varepsilon^1, \ldots, \varepsilon^n$ --- сопряжённый базис пространства $V^\ast$. Тогда
+    \[
+        \omega_i(\varepsilon^j) = \varepsilon^j(e_i) = \delta^i_j,
+    \]
+    так что $\omega_1, \ldots, \omega_n$ --- базис пространства $V^{\ast\ast}$, сопряжённый $\varepsilon^1, \ldots, \varepsilon^n$. Отображение $x \mapsto \varphi_x$ переводит вектор с координатами $x_1, \ldots, x_n$ в базисе $e_1, \ldots, e_n$ пространства $V$ в вектор с такими же координатами в базисе $\omega_1, \ldots, \omega_n$ пространства $V^{\ast\ast}$. Следовательно, оно биективно.
+\end{proof}
+
+Отметим, что этот изоморфизм не зависит от выбора базисов в $V$ и $V^{\ast\ast}$, поэтому его часто называют \textit{каноническим}.
+
+\begin{corollary}
+    Всякий базис пространства $V^\ast$ сопряжён некоторому базису пространства $V$.
+\end{corollary}
+
+\begin{problem}[Из Винберга]
+    Доказать, что линейные функции $f_1, \ldots, f_n$ (где $n = \dim V$) составляют базис пространства $V^\ast$ тогда и только тогда, когда не существует ненулевого вектора $x \in V$, для которого $f_1(x) = \ldots = f_n(x) = 0$.
+\end{problem}
+
+\begin{solution}
+    $\Rightarrow$. Пусть $f_1, \ldots, f_n$ --- базис и нашёлся такой вектор $v \in V$, $v \ne \bs{0}$, для которого $f_1(v) = \ldots = f_n(v) = 0$. Этот базис сопряжён некоторому базису $e_1, \ldots, e_n$ пространства $V$. А это значит, что вектор $v$ ненулевой, но все координаты у него нулевые. Так не бывает.
+
+    $\Leftarrow$. Выберем базис $\varepsilon^1, \ldots, \varepsilon^n$ в $V^\ast$. Тогда $f_i = a^i_j\varepsilon^j$. Рассмотрим систему уравнений (верхними индексами обозначены координаты, а не степени)
+    \[
+        \begin{cases}
+            f_1(x) = 0,\\
+            f_2(x) = 0,\\
+            \dotfill\\
+            f_n(x) = 0\\
+        \end{cases} \Leftrightarrow
+        \begin{cases}
+            a^1_1x^1 + a^1_2x^2 + \ldots + a^1_nx^n = 0,\\
+            a^2_1x^1 + a^2_2x^2 + \ldots + a^2_nx^n = 0,\\
+            \dotfill\\
+            a^n_1x^1 + a^n_2x^2 + \ldots + a^n_nx^n = 0,\\
+        \end{cases}
+    \]
+    По условию не существует ненулевого вектора $x$ такого, что $f_1(x) = f_2(x) = \ldots = f_n(x) = 0$, поэтому выписанная система не имеет решений кроме нулевого. Поэтому она определена, а значит, по правилу Крамера матрица коэффициентов невырожденна, отсюда следует линейная независимость строк. А полноту можно не доказывать, потому что количество векторов уже правильное.
+\end{solution}
+
+Это определение и предложение после него рассказывать не нужно, оно нам пригодится в вопросе 37.
+
+\begin{definition}
+    Пусть $\A: V \to W$ --- линейное отображение. Отображение $\A^\ast: W^\ast \to V^\ast$, заданное формулой
+    \[
+        (\A^\ast\xi)(v) \vcentcolon = \xi(\A v)\quad \forall \xi \in W^\ast, v \in V,
+    \]
+    называется \textit{сопряжённым к $\A$}.
+\end{definition}
+
+Непосредственно проверяется, что отображение $\A^\ast$ линейное.
+
+\begin{proposal}
+    Пусть $e_1, \ldots, e_m$ и $f_1, \ldots, f_n$ --- базисы пространств $V$ и $W$ соответственно. Тогда матрица отображения $\A: V \to W$ в этих базисах и матрица сопряжённого отображения $\A^\ast: W^\ast \to V^\ast$ в двойственный базисах $\varphi^1, \ldots, \varphi^n$ и $\varepsilon^1, \ldots, \varepsilon^m$ получаются друг из друга транспонированием.
+\end{proposal}
+
+\begin{proof}
+    Пусть $A = (a^i_j)$ --- матрица отображения $\A$ в базисах $e_1, \ldots, e_m$ и $f_1, \ldots, f_n$. Тогда для любого вектора $x = x^ie_i$ мы имеем
+    \[
+        (\A^\ast\varphi^i)(x) = \varphi^i(\A x) = \varphi^i(a^j_kx^kf_j) = a^j_kx^k\varphi^i(f_j) = a^j_kx^k\delta^i_j = a^i_kx^k = a^i_k\varepsilon^k(x).
+    \]
+
+    Следовательно, $\A^\ast\varphi^i = a^i_k\varepsilon^k$. Это равенство означает, что в $i$-ой строке матрицы $A = (a^i_k)$ стоят координаты образа $\varphi^i$ при отображении $\A^\ast$ по отношению к базису $\varepsilon^1, \ldots, \varepsilon^m$. По определению это означает, что матрица линейного отображения $\A^\ast$ получается из $A$ транспонированием.
+\end{proof}
+

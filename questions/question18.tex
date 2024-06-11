@@ -1,0 +1,24 @@
+\section{Теорема Гамильтона "---Кэли}
+
+\begin{theorem}[Гамильтон, Кэли]
+    Характеристический многочлен $\chi_\A$ оператора $\A: V \to V$ аннулирует этот оператор, т.\,е. $\chi_\A(\A) = 0$.
+\end{theorem}
+
+\begin{proof}
+    Для квадратно матрицы $M$ обозначим через $\widehat{M}$ транспонированную матрицы алгебраических дополнений. Из курса алгебры, $M \cdot \widehat{M} = \det M \cdot E$. Теперь возьмём в качестве $M$ матрицу $A - t \cdot E$, где $A$ --- матрица оператора $\A$ в произвольном базисе. Тогда $(A - t \cdot E)(\widehat{A - t \cdot E}) = \det (A - t \cdot E) \cdot E = \chi_\A(t) \cdot E$. По определению, элементы матрицы $\widehat{A - t \cdot E}$ являются многочленами степени не выше $n - 1$ ($n = \dim V$). Следовательно, эту матрицу можно записать в виде $\widehat{A - t \cdot E} = B_0 + t \cdot B_1 + t^2 \cdot B_2 + \ldots + t^{n - 1}B_{n - 1}$, где $B_i$ --- числовые матрицы. Подставив это разложение вместе с разложение $P_\A(t) = a_0 + a_1t + a_2t^2 + \ldots + a_nt^n$ в формулу выше, получим
+\[
+    (A - t \cdot E)(B_0 + t \cdot B_1 + t^2 \cdot B_2 + \ldots + t^{n - 1} \cdot B_{n - 1}) = (a_0 + a_1t + a_2t^2 + \ldots + a_nt^n) \cdot E.
+\]
+
+Приравнивая коэффициенты при степенях $t$ и складывая полученные уравнения, получим:
+\[
+    \begin{array}{r | l}
+        AB_0 = a_0E & {} \cdot A\\
+        -B_0 + AB_1 = a_1E & {} \cdot A^2\\
+        -B_1 + AB_2 = a_2E & {} \cdot A^3\\
+        \vdots & \vdots\\
+        -B_{n - 2} + AB_{n - 1} = a_{n - 1}E & {} \cdot A^n\\
+    \end{array} \overset{+}{\Rightarrow} 0 = \underbrace{a_0E + a_1A + a_2A^2 + \ldots + a_nA^n}_{\chi_\A(A) = \chi_\A(\A)}
+\]
+\end{proof}
+
