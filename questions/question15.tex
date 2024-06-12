@@ -12,6 +12,10 @@
     Пусть $\lambda$ --- собственное значение для оператора $\A$. Подпространство $V_\lambda \vcentcolon = \Ker(\A - \lambda \cdot \id)$ называется \textit{собственным подпространством}, соответствующим $\lambda$.
 \end{definition}
 
+\begin{proposal}
+    Каждое собственное подпространство $V_\lambda$ оператора $\A$ является инвариантным относительно него.
+\end{proposal}
+
 \begin{proof}
     Действительно, если $v \in V_\lambda$, то $\A v = \lambda v \in V_\lambda$.
 \end{proof}
@@ -21,7 +25,7 @@
 \end{proposal}
 
 \begin{proof}
-    Пусть $\dim V_\lambda = k$. Выберем базис $e_1, \ldots, e_k$ в пространстве $V_\lambda$ и дополним его до базиса в $V$. Т.\,к. $\A e_i = \lambda e_i$ при $i = 1, \ldots, k$, матрица оператора $\A$ в выбранном базисе имеет вид
+    Пусть $\dim V_\lambda = k$. Выберем базис $e_1, \ldots, e_k$ в подпространстве $V_\lambda$ и дополним его до базиса в $V$. Т.\,к. $\A e_i = \lambda e_i$ при $i = 1, \ldots, k$, по предложению 1 из вопроса 12 матрица оператора $\A$ в выбранном базисе имеет вид
     $
     A = 
     \left(
@@ -34,6 +38,6 @@
          & 0 & & \widetilde{A}
     \end{array}
     \right)
-    $. Тогда $\chi_\A(t) = \det(A - t \cdot E) = (\lambda - t)^k\det(\widetilde{A} - t \cdot E) = (\lambda - t)^k\chi_{\widetilde{\A}}(t)$, где $\widetilde{\A}$ --- фактор-оператор. Отсюда вытекает, что кратность корня $\lambda$ не меньше $k = \dim V_\lambda$.
+    $. Тогда \[\chi_\A(t) = \det(A - t \cdot E) = (\lambda - t)^k\det(\widetilde{A} - t \cdot E) = (\lambda - t)^k\chi_{\widetilde{\A}}(t),\] где $\widetilde{\A}$ --- фактор-оператор. Отсюда вытекает, что кратность корня $\lambda$ не меньше $k = \dim V_\lambda$.
 \end{proof}
 

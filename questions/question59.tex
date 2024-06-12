@@ -1,0 +1,124 @@
+\section{Произведение тензоров. Базис в пространстве тензоров типа $(p, q)$. Координаты тензора, их изменение при замене базиса в основном пространстве. Инвариант. Свертки тензора}
+
+Зафиксируем базис $e_1, \ldots, e_n$ в пространстве $V$. В пространстве $V^\ast$ имеется двойственный базис $\varepsilon^1, \ldots, \varepsilon^n$, где $\varepsilon^i(e_j) = \delta^i_j$. Тогда любая полилинейная функция $\T \in \mathbb{P}_p^q(V)$ задаётся своими значениями на базисных векторах и ковекторах:
+\begin{multline*}
+    \T(v_1, \ldots, v_p, \xi^1, \ldots, \xi^q) = \T(v_1^{i_1}e_{i_1}, \ldots, v_p^{i_p}e_{i_p}, \xi^1_{j_1}\varepsilon^{j_1}, \ldots, \xi^q_{j_q}\varepsilon^{j_q}) =\\ = v_1^{i_1} \ldots v_p^{i_p}\xi^1_{j_1}\ldots \xi^q_{j_q}\T(e_{i_1}, \ldots, e_{i_p}, \varepsilon^{j_1}, \ldots, \varepsilon^{j_q}).
+\end{multline*}
+
+\begin{definition}
+    Сопоставим полилинейной функции $\T \in \Ten_p^q(V)$ и базису $e_1, \ldots, e_n$ пространства $V$ набор из $n^{p + q}$ чисел.
+    \[
+        T_{i_1, \ldots, i_p}^{j_1, \ldots, j_q} \vcentcolon = \T(e_{i_1}, \ldots, e_{i_p}, \varepsilon^{j_1}, \ldots, \varepsilon^{j_q}).
+    \]
+    Обозначение: $\T = \{T_{i_1, \ldots, i_p}^{j_1, \ldots, j_q}\}$.
+\end{definition}
+
+Посмотрим, как преобразуется этот набор при заменах базисов. Пусть $C = (c^i_{i^\prime})$ --- матрица перехода от базиса $e_1, \ldots, e_n$ к $e_{1^\prime}, \ldots, e_{n^\prime}$. Тогда мы имеем $e_{i^\prime} = c^i_{i^\prime}e_i$, $\varepsilon^{j^\prime} = c^{j^\prime}_j\varepsilon^j$ и
+\begin{multline*}
+    T_{i_1^\prime, \ldots, i_p^\prime}^{j_1^\prime, \ldots, j_q^\prime} = \T(e_{i_1^\prime}, \ldots, e_{i_p^\prime}, \varepsilon^{j_1^\prime}, \ldots, \varepsilon^{j_q^\prime}) = \T(c^{i_1}_{i_1^\prime}e_{i_1}, \ldots, c^{i_p}_{i_p^\prime}e_{i_p}, c^{j_1^\prime}_{j_1}\varepsilon^{j_1}, \ldots, c^{j_q^\prime}_{j_q}\varepsilon^{j_q}) =\\ = c^{i_1}_{i_1^\prime}\ldots c^{i_p}_{i_p^\prime}c^{j_1^\prime}_{j_1}\ldots c^{j_q^\prime}_{j_q}\T(e_{i_1}, \ldots, e_{i_p}, \varepsilon^{j_1}, \ldots, \varepsilon^{j_q}) = c^{i_1}_{i_1^\prime}\ldots c^{i_p}_{i_p^\prime}c^{j_1^\prime}_{j_1}\ldots c^{j_q^\prime}_{j_q}T_{i_1, \ldots, i_p}^{j_1, \ldots, j_q}.
+\end{multline*}
+
+\begin{definition}
+    \textit{Тензором} типа $(p, q)$ называется соответствие
+    \[
+        \text{базисы в $V$} \mapsto \text{наборы из $n^{p + q}$ чисел $T = \{T_{i_1, \ldots, i_p}^{j_1, \ldots, j_q}\}$},
+    \]
+    при котором наборы $T = \{T_{i_1, \ldots, i_p}^{j_1, \ldots, j_q}\}$ и $T^\prime = \{T_{i_1^\prime, \ldots, i_p^\prime}^{j_1^\prime, \ldots, j_q^\prime}\}$, соответствующие различным базисам $e_1, \ldots, e_n$ и $e_{1^\prime}, \ldots, e_{n^\prime}$ связаны соотношением
+    \[
+        T_{i_1^\prime, \ldots, i_p^\prime}^{j_1^\prime, \ldots, j_q^\prime} = c^{i_1}_{i_1^\prime}\ldots c^{i_p}_{i_p^\prime}c^{j_1^\prime}_{j_1}\ldots c^{j_q^\prime}_{j_q}T_{i_1, \ldots, i_p}^{j_1, \ldots, j_q}.
+    \]
+    Это соотношение называется \textit{тензорным законом преобразования}. Числа $T_{i_1, \ldots, i_p}^{j_1, \ldots, j_q}$ называются \textit{компонентами} (\textit{координатами}) тензора $T$.
+\end{definition}
+
+Тензоры типа $(p, q)$ образуют линейное пространство $\Ten_p^q(V)$ относительно операций покомпонентного сложения и умножения на скаляры.
+
+Полилинейная функция $\T \in \mathbb{P}_p^q(V)$ определяет тензор $T \in \Ten_p^q(V)$ по формуле из определения компонент тензора. Обратно, тензор определяет полилинейную функцию по формуле
+\[
+    \T(v_1, \ldots, v_p, \xi^1, \ldots, \xi^q) = v_1^{i_1}\ldots v_p^{i_p}\xi^1_{j_1}\ldots\xi^q_{j_q}T_{i_1, \ldots, i_p}^{j_1, \ldots, j_q}.
+\]
+
+Таким образом, можно отождествить пространства $\mathbb{P}_p^q(V)$ и $\Ten_p^q(V)$. Это соответствие обобщает соответствие между билинейными функциями (или линейными операторами) и их матрицами.
+
+Далее мы не будем различать тензоры и полилинейные функции. Правда, и до этого, честно сказать, не различали.
+
+\begin{example}
+    \begin{enumerate}
+        \item Скаляры $\lambda \in \F$ естественно считать тензорами типа $(0, 0)$. Они не меняются при замене базиса.
+        \item Векторы --- это тензоры типа $(0, 1)$. Тензорный закон преобразования $v^{i^\prime} = c^{i^\prime}_iv^i$ описывает изменение координат вектора при замене базиса.
+        \item Ковекторы (линейные функции) --- это тензоры типа $(1, 0)$. Тензорный закон преобразования $\xi_{i^\prime} = c^i_{i^\prime}\xi_i$ --- это закон преобрвазования координат линейной функции при замене базиса.
+        \item Билинейные функции --- это тензоры типа $(2, 0)$. Тензорный закон преобразования $T_{i^\prime j^\prime} = c^i_{i^\prime}c^j_{j^\prime}T_{ij}$ --- это закон изменения матрицы билинейной функции.
+        \item Линейные операторы --- это тензоры типа $(1, 1)$. Тензорный закон преобразования $T^{i^\prime}_{j^\prime} = c^{i^\prime}_ic^j_{j^\prime}T^i_j$ --- это закон изменения матрицы оператора.
+    \end{enumerate}
+\end{example}
+
+\begin{definition}
+    \textit{Тензорным произведением} двух тензоров $\T_1 \in \Ten_{p_1}^{q_1}(V)$ и $\T_2 \in \Ten_{p_2}^{q_2}(V)$ называется тензор $\T_1 \otimes \T_2 \in \Ten_{p_1 + p_2}^{q_1 + q_2}(V)$, заданный по формуле
+    \begin{multline*}
+        \T_1 \otimes \T_2(v_1, \ldots, v_{p_1}, v_{p_1 + 1}, \ldots, v_{p_1 + p_2}, \xi^1, \ldots, \xi^{q_1}, \xi^{q_1 + 1}, \ldots, \xi^{q_1 + q_2}) =\\ = \T_1(v_1, \ldots, v_{p_1}, \xi^1, \ldots, \xi^{q_1}) \cdot \T_2(v_{p_1 + 1}, \ldots, v_{p_1 + p_2}, \xi^{q_1 + 1}, \ldots, \xi^{q_1 + q_2}).
+    \end{multline*}
+\end{definition}
+
+Операция тензорного произведения, очевидно, ассоциативна и дистрибутивна относительно сложения, но не коммутативна.
+
+Базис в пространстве тензоров $\Ten_p^q(V)$ можно задать при помощи операции тензорного произведения. Рассмотрим тензор $\varepsilon^{i_1} \otimes \ldots\ \otimes \varepsilon^{i_p} \otimes e_{j_1} \otimes \ldots \otimes e_{j_q}$. По определению, её значение на $p$ векторах и $q$ ковекторах задаётся формулой
+\[
+    (\varepsilon^{i_1} \otimes \ldots\ \otimes \varepsilon^{i_p} \otimes e_{j_1} \otimes \ldots \otimes e_{j_q})(v_1, \ldots, v_p, \xi^1, \ldots, \xi^q) = \varepsilon^{i_1}(v_1) \ldots \varepsilon^{i_p}(v_p) \cdot e_{i_1}(\xi^1) \ldots e_{i_q}(\xi^q)
+\]
+и имеет координаты
+\[
+    T_{k_1, \ldots, k_p}^{l_1, \ldots, l_q} = (\varepsilon^{i_1} \otimes \ldots\ \otimes \varepsilon^{i_p} \otimes e_{j_1} \otimes \ldots \otimes e_{j_q})(e_{k_1}, \ldots, e_{k_p}, \xi^{l_1}, \ldots, \xi^{l_q}) = \delta_{k_1}^{i_1}\ldots\delta_{k_p}^{i_p}\delta_{j_1}^{l_1}\ldots\delta_{j_q}^{l_q}.
+\]
+
+\begin{theorem}
+    Тензоры $\varepsilon^{i_1} \otimes \ldots \otimes \varepsilon^{i_p} \otimes e_{j_1} \otimes \ldots \otimes e_{j_q}$, отвечающие всевозможным значениям индексов $i_1, \ldots, i_p, j_1, \ldots, j_q$, образуют базис в пространстве $\Ten_p^q(V)$.
+\end{theorem}
+
+\begin{proof}
+    Сначала докажем линейную независимость данных тензоров. Предположим, существуют такие числа $\lambda_{i_1, \ldots, i_p}^{j_1, \ldots, j_q}$, что линейная комбинация $\lambda_{i_1, \ldots, i_p}^{j_1, \ldots, j_q}\varepsilon^{i_1} \otimes \ldots \otimes \varepsilon^{i_p} \otimes e_{j_1} \otimes \ldots \otimes e_{j_q}$ равна нулю. Прменив эту полилинейную функцию к аргументам $e_{k_1}, \ldots, e_{k_p}$, $\varepsilon^{l_1}, \ldots, \varepsilon^{l_q}$, получим $(\ast)$
+    \begin{multline*}
+        0 = (\lambda_{i_1, \ldots, i_p}^{j_1, \ldots, j_q}\varepsilon^{i_1} \otimes \ldots \otimes \varepsilon^{i_p} \otimes e_{j_1} \otimes \ldots \otimes e_{j_q})(e_{k_1}, \ldots, e_{k_p}, \varepsilon^{l_1}, \ldots, \varepsilon^{l_q}) =\\ = \lambda_{i_1, \ldots, i_p}^{j_1, \ldots, j_q}\delta_{k_1}^{i_1}\ldots\delta_{k_p}^{i_p}\delta_{j_1}^{l_1}\ldots\delta_{j_q}^{l_q} = \lambda_{k_1, \ldots, k_p}^{l_1, \ldots, l_q},
+    \end{multline*}
+    т.\,е. все коэффициенты линейной комбинации равны нулю.
+
+    Теперь докажем, что любой тензор $T = \{T_{i_1, \ldots, i_p}^{j_1, \ldots, j_q}\}$ представляется в виде линейной комбинации данных тензоров. А именно, докажем, что
+    \[
+        T = T_{i_1, \ldots, i_p}^{j_1, \ldots, j_q}\varepsilon^{i_1} \otimes \ldots \otimes \varepsilon^{i_p} \otimes e_{j_1} \otimes \ldots \otimes e_{j_q}.
+    \]
+
+    В силу полилинейности это равенство достаточно проверить на наборах базисных векторов и ковекторов, т.\,е. на аргументах вида $e_{k_1}, \ldots, e_{k_p}$, $\xi^{l_1}, \ldots, \xi^{l_q}$. При подстановке этих аргументов мы по определению получаем $T_{k_1, \ldots, k_p}^{l_1, \ldots, l_q}$, а при подстановке в правую часть мы получаем то же самое в силу выкладки, аналогичной $(\ast)$.
+\end{proof}
+
+\begin{corollary}
+    $\dim\Ten_p^q(V) = n^{p + q}$.
+\end{corollary}
+
+Пусть теперь $T = \{T_{i_1, \ldots, i_p}^{j_1, \ldots, j_q}\}$ --- тензор хотя бы с одним нижним и верхним индексом, т.\,е. $p > 0$ и $q > 0$. Зафиксируем один верхний и один нижний индекс (пусть для простоты это будут первые индексы) и сформируем следующий новый набор из $n^{p + q - 2}$ чисел:
+\[
+    cT \vcentcolon = \{T_{k, i_2, \ldots, i_p}^{k, j_2, \ldots, j_q}\},
+\]
+где как обычно по повторяющемуся верхнему и нижниму индексу $k$ производится суммирование. 
+
+\begin{proposal}
+    $c\T = \{T_{k, i_2, \ldots, i_p}^{k, j_2, \ldots, j_q}\}$ является тензором типа $(p - 1, q - 1)$.
+\end{proposal}
+
+\begin{proof}
+    Необходимо проверить тензорный закон. Мы имеем
+    \begin{multline*}
+        (cT)_{i_1^\prime, \ldots, i_p^\prime}^{j_1^\prime, \ldots, j_q^\prime} = T_{k^\prime, i_2^\prime, \ldots, i_p^\prime}^{k^\prime, j_2^\prime, \ldots, j_q^\prime} = c^{i_1}_{k^\prime}c^{i_2}_{i_2^\prime}\ldots c^{i_p}_{i^\prime_p}c^{k^\prime}_{j_1}c^{j_2^\prime}_{j_2}\ldots c^{j^\prime_q}_{j_q}T_{i_1, i_2, \ldots, i_p}^{j_1, j_2, \ldots, j_q} =\\ = c^{i_2}_{i_2^\prime}\ldots c^{i_p}_{i^\prime_p}c^{j_2^\prime}_{j_2}\ldots c^{j^\prime_q}_{j_q}c^{i_1}_{k^\prime}c^{k^\prime}_{j_1}T_{i_1, i_2, \ldots, i_p}^{j_1, j_2, \ldots, j_q} = c^{i_2}_{i_2^\prime}\ldots c^{i_p}_{i^\prime_p}c^{j_2^\prime}_{j_2}\ldots c^{j^\prime_q}_{j_q}\delta^{i_1}_{j_1}T_{i_1, i_2, \ldots, i_p}^{j_1, j_2, \ldots, j_q} =\\ = c^{i_2}_{i_2^\prime}\ldots c^{i_p}_{i^\prime_p}c^{j_2^\prime}_{j_2}\ldots c^{j^\prime_q}_{j_q}T_{k, i_2, \ldots, i_p}^{k, j_2, \ldots, j_q} = c^{i_2}_{i_2^\prime}\ldots c^{i_p}_{i^\prime_p}c^{j_2^\prime}_{j_2}\ldots c^{j^\prime_q}_{j_q}(cT)_{i_2, \ldots, i_p}^{j_2, \ldots, j_q}.
+    \end{multline*}
+\end{proof}
+
+\begin{definition}
+    Тензор $cT \vcentcolon = \{T_{k, i_2, \ldots, i_p}^{k, j_1, \ldots, j_q}\}$ называется \textit{свёрткой} тензора $T = \{T_{i_1, i_2, \ldots, i_p}^{j_1, j_1, \ldots, j_q}\}$ по (первым) верхнему и нижнему индексам.
+\end{definition}
+
+Свёртка, очевидно, задаёт линейное отображение $\Ten_p^q(V) \to \Ten_{p - 1}^{q - 1}(V)$. Операцию свёртки можно проводить несколько раз до исчерпания верхни или нижних индексов. Последняя возможная свёртка называется \textit{полной свёрткой}.
+
+\begin{example}
+    \begin{enumerate}
+        \item Пусть $\A$ --- оператор, т.\,е. тензор типа $(1, 1)$. Результатом его свёртки будет тензор типа $(0, 0)$, т.\,е. скаляр. Этот скаляр --- это сумма $a^i_i$ диагональных элементов матрицы оператора $\A$ в любом базисе, т.\,е. след оператора $c\A = \tr\A$. Проверка тензорного закона для свёртки в данном случае сводится к проверке независимости следа от базиса.
+        \item Пусть $B = \{b_{i_1i_2}\}$ --- билинейная функция (тензор типа $(0, 2)$), а $u = \{u^{j_1}\}$ и $v = \{v^{j_2}\}$ --- векторы (тензоры типа $(1, 0)$). Рассмотрим тензор $B \otimes u \otimes v = \{b_{i_1i_2}u^{j_1}v^{j_2}\}$ типа $(2, 2)$. Его полная свёртка есть скаляр $b_{kl}u^kv^l = B(u, v)$ --- значение билинейной функции на данной паре векторов.
+    \end{enumerate}
+\end{example}
+

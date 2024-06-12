@@ -6,7 +6,7 @@
         \item $v + u = u + v$ $\forall u, v \in V$;
         \item $(u + v) + w = u + (v + w)$ $\forall u, v, w \in V$;
         \item $\exists \bs{0} \in V: v + \bs{0} = v$ $\forall v \in V$;\hspace{2.9cm}\smash{\raisebox{.5\dimexpr\baselineskip+\itemsep+\parskip}{$\left.\rule{0pt}{.5\dimexpr4\baselineskip+3\itemsep+3\parskip}\right\}\text{$(V, +)$ --- абелева группа}$}}
-        \item $\forall v \in V\;\exists (-v) \in V: v + (-v) = \bs{0}$;
+        \item $\forall v \in V\;\exists (-v) \in V: (-v) + v = \bs{0}$;
         \item $\lambda \cdot (u + v) = \lambda \cdot u + \lambda \cdot v$ $\forall u, v \in V$, $\forall \lambda \in \F$;
         \item $(\lambda + \mu) \cdot v = \lambda \cdot v + \mu \cdot v$ $\forall v \in V$, $\forall \lambda, \mu \in \F$;
         \item $\lambda \cdot (\mu \cdot v) = (\lambda\mu) \cdot v$ $\forall v \in V$, $\forall \lambda, \mu \in \F$;\hspace{1cm}\smash{\raisebox{.5\dimexpr\baselineskip+\itemsep+\parskip}{$\left.\rule{0pt}{.5\dimexpr4\baselineskip+3\itemsep+3\parskip}\right\}\text{$\F$ линейно действует на $V$}$}}
@@ -20,19 +20,113 @@
 
 \begin{proposal}
     \begin{enumerate}[nolistsep]
-        \item $\bs{0} \cdot v = \lambda \cdot \bs{0} = \bs{0}$ $\forall v \in V$, $\forall \lambda \in \F$;
-        \item $(-1) \cdot v = -v$ $\forall v \in V$;
-        \item $\lambda v = \bs{0} \Rightarrow \lambda = 0$ или $v = \bs{0}$.
+        \item[$1^\circ.$] $\bs{0} \cdot v = \lambda \cdot \bs{0} = \bs{0}$ $\forall v \in V$, $\forall \lambda \in \F$;
+        \item[$2^\circ.$] $(-1) \cdot v = -v$ $\forall v \in V$;
+        \item[$3^\circ.$] $\lambda v = \bs{0} \Rightarrow \lambda = 0$ или $v = \bs{0}$.
     \end{enumerate}
 \end{proposal}
 
 \begin{proof}
     \begin{enumerate}[nolistsep]
-        \item $0 \cdot v + 0 \cdot v = (0 + 0) \cdot v = 0 \cdot v \Rightarrow 0 \cdot v = \bs{0}$. Аналогично, $\lambda \cdot \bs{0} + \lambda \cdot \bs{0} = \lambda(\bs{0} + \bs{0}) = \lambda \cdot \bs{0} \Rightarrow \lambda \cdot \bs{0} = \bs{0}$;
-        \item $v + (-1) \cdot v = 1 \cdot v + (-1) \cdot v = (1 - 1) \cdot v = 0 \cdot v = \bs{0} \Rightarrow -v = (-1) \cdot v$.
-        \item $\lambda \ne 0 \Rightarrow \bs{0} = \lambda^{-1}\lambda v = v$.
+        \item[$1^\circ.$] $0 \cdot v + 0 \cdot v = (0 + 0) \cdot v = 0 \cdot v \Rightarrow 0 \cdot v = \bs{0}$. Аналогично, $\lambda \cdot \bs{0} + \lambda \cdot \bs{0} = \lambda(\bs{0} + \bs{0}) = \lambda \cdot \bs{0} \Rightarrow \lambda \cdot \bs{0} = \bs{0}$;
+        \item[$2^\circ.$] $v + (-1) \cdot v = 1 \cdot v + (-1) \cdot v = (1 - 1) \cdot v = 0 \cdot v = \bs{0} \Rightarrow -v = (-1) \cdot v$.
+        \item[$3^\circ.$] $\lambda \ne 0 \Rightarrow \bs{0} = \lambda^{-1}\lambda v = v$.
     \end{enumerate}
 \end{proof}
+
+\begin{problem}[А.\,А. Клячко\footnotemark]
+    Найдите лишнюю аксиому и докажите, что она лишняя, а все остальные не лишние.
+\end{problem}
+
+\footnotetext{Ещё в первом семестре дело было\ldots}
+
+\begin{solution}
+    Лишней является аксиома коммутативности сложения (первая), докажем это. Заметим, что предложение 1 было доказано без использования коммутативности, значит, им здесь можно пользоваться. Нам будет нужен ещё два пункта (везде над переходами стоят номера пунктов или аксиом, которые использовались при этом переходе):
+    \begin{enumerate}[nolistsep]
+        \item[$4^\circ.$] $v - v \overset{8, 2^\circ}{=\joinrel=} 1 \cdot v + (-1) \cdot v \overset{6}{=} (1 - 1) \cdot v = 0 \cdot v \overset{1^\circ}{=} \bs{0} \Rightarrow$ \fbox{$v - v = \bs{0}$};
+        \item[$5^\circ.$] $\bs{0} + v \overset{4^\circ}{=} (v - v) + v \overset{2}{=} v + (\underbrace{-v + v}_{{} = \bs{0}}) \overset{3, 4}{=\joinrel=} v \Rightarrow$ \fbox{$\bs{0} + v = v$}.
+    \end{enumerate}
+
+    Теперь мы можем вывести первую аксиому из остальных:
+    \begin{multline*}
+        u + v \overset{3}{=} (u + v) + \bs{0} \overset{4}{=} (u + v) + (-(v + u) + (v + u)) \overset{2}{=} ((u + v) - (v + u)) + (v + u) \overset{2}{=} {}\\\displaystyle {} = (u + \underbrace{v - v}_{{} = \bs{0}} - u) + (v + u) \overset{4^\circ}{=} (\underbrace{u - u}_{{} = \bs{0}}) + (v + u) \overset{4^\circ}{=} \bs{0} + (v + u) \overset{5^\circ}{=} v + u.
+    \end{multline*}
+
+Антон Александрович сказал, что остальные не выводятся. Но мы с Костей Зюбиным не смогли доказать это для 5-ой аксиомы. Доказательство независимости от остальных для каждой аксиомы проводится так: нужно привести пример такой структуры, в которой выполняются все аксиомы, кроме выбранной.
+    \begin{itemize}
+        \item \textbf{2 аксиома}. Рассмотрим множество $M = \{e, a, b\}$ с операцией $\ast$, заданной таблицей:
+            $$
+            \begin{array}{c || c | c | c}
+                \ast & e & a & b\\
+                \hline\hline
+                e & e & a & b\\
+                \hline
+                a & a & a & e\\
+                \hline
+                b & b & e & b
+            \end{array}
+            $$
+
+            Заметим, что операция $\ast$ коммутативна, в $M$ существует нейтральный элемент $e$ по $\ast$ и каждый элемент имеет обратный по $\ast$. Однако эта операция не ассоциативна:
+            $$
+            (b \ast a) \ast a = e \ast a = a,\quad b \ast (a \ast a) = b \ast a = e.
+            $$
+
+            Теперь возьмём алгебраическую систему $V = (\R \times M, +, \star)$ с операциями, определёнными по следующим правилам:
+            $$
+            u + v = (a, x) + (b, y) \vcentcolon = (a + b, x \ast y),\quad \lambda \star v = \lambda \star (a, x) \vcentcolon = (\lambda a, x).
+            $$
+
+            Аксиома 2 не выполнена, т.\,к. $\ast$ неассоциативна. Выполнение аксиом 1, 3, 4 следует из того, что они выполняются для $+$ над $\R$ и $\ast$ над $M$. Проверим выполнение остальных аксиом:
+            $$\footnotesize
+            \begin{array}{rl}
+                5:\; & \lambda \star (a + b, x \ast y) = (\lambda(a + b), x \ast y) = (\lambda a + \lambda b, x \ast y) = (\lambda a, x) + (\lambda b, y) = \lambda\star((a, x) + (b, y))\\
+                6:\; & (\lambda + \mu) \cdot (a, x) = ((\lambda + \mu)a, x) = (\lambda a + \mu a, x \ast x) = (\lambda a, x) + (\mu a, x) = \lambda \star (a, x) + \mu \star (a, x)\\
+                7:\; & (\lambda\mu) \star (a, x) = (\lambda\mu a, x) = \lambda \star (\mu a, x)\\
+                8:\; & 1 \star (a, x) = (1 \cdot a, x) = (a, x)
+            \end{array}
+            $$
+        \item \textbf{3 аксиома}. Без третьей аксиомы нельзя ввести четвёртую, поэтому её удаление не имеет смысла.
+        \item \textbf{4 аксиома}. Рассмотрим алгебраическую систему $V = (\R \cup \{\infty\}, +, \boldsymbol{\cdot})$. Доопределим сложение и умножение для $\infty$ следующим образом:
+            $$
+            \infty + a = a + \infty \vcentcolon = \infty,\quad \lambda \cdot \infty \vcentcolon = \infty.
+            $$
+
+            Выполнение аксиом 1-3 сразу вытекает из определения. Аксиома 4 не выполнена, т.\,к. у $\infty$ нет обратного по $+$. Выполнение аксиом 5-8 проверяется перебором нескольких случаев.
+        \item \textbf{6 аксиома}. Рассмотрим алгебраическую систему $V = (\R, +, \star)$, в которой сложение определено так же, как в действительных числах, а умножение так:
+            $$
+            \lambda \star v \vcentcolon = v.
+            $$
+
+            Аксиомы 1-4 выполнены, т.\,к. они выполнены для $\R$ и $+$. Выполнение аксиом 5, 7 и 8 сразу вытекает из определения. Аксиома 6 не выполнена:
+            $$
+            u + u = 1 \star u + 1 \star u,\quad (1 + 1) \star u = u.
+            $$
+        \item \textbf{7 аксиома}. Рассмотрим $\R$ как векторное пространство над полем $\Q$ с базисом $M \supset \{1, \sqrt{2}\}$. Пусть отображение $f: \R \rightarrow \R$ задаётся своими значениями на числах из $M$, а для других чисел определяется соотношением
+            $$
+            f(q_1v_1 + q_2v_2 + \ldots + q_nv_n) = q_1f(v_1) + q_2f(v_2) + \ldots + q_nf(v_n),
+            $$
+            где $v_i$ --- некоторые векторы из базиса $M$. Такое отображение является линейным, сохраняющим все рациональыне числа.
+
+            Теперь возьмём алгебраическую систему $V = (\R, +, \star)$, в которой сложение $+$ определено естественным образом, а умножение $\star$ определяется через $f$ и естественное умножение $\boldsymbol{\cdot}$:
+            $$
+            \lambda \star u \vcentcolon = f(\lambda) \cdot u.
+            $$
+
+            Аксиомы 1-4 выполнены, т.\,к. они выполнены для $\R$ и $+$. Выполнение аксиомы 5 проверяется непосредственно. Аксиома 6 выполнена, т.\,к. отображение $f$ линейно. Проверим, что аксиома 7 не выполнена:
+            $$
+            \sqrt{2} \star (\sqrt{2} \star u) = \sqrt{2} \star u = u,\quad (\sqrt{2} \star \sqrt{2}) \star u = 2u.
+            $$
+
+            Выполнение аксиомы 8 вытекает из определения.
+        \item \textbf{8 аксиома}. Рассмотрим алгебраическую систему $V = (\R, +, \star)$, в которой сложение определено естественным образом, а умножение так:
+            $$
+            \lambda \star u \vcentcolon = \bs{0}.
+            $$
+
+            Аксиомы 1-4 выполнены, т.\,к. они выполнены для $\R$ и $+$. Выполнение аксиом 5-7 проверяется непосредственно. Аксиома 8 не выполнена.
+    \end{itemize}
+\end{solution}
 
 \begin{example}
     \begin{enumerate}
@@ -121,7 +215,7 @@
 \end{definition}
 
 \begin{definition}
-    Линейное пространство называется \textit{конечномерным}, если в нём существует базис, состоящий из конечного числа векторов. В противном случае пространство называется \textit{бесконечномерным}.
+    Линейное пространство называется \textit{конечномерным}, если в нём существует конечная система векторов, порождающая его. В противном случае пространство называется \textit{бесконечномерным}.
 \end{definition}
 
 \begin{proposal}
@@ -166,7 +260,7 @@
 Теперь докажем теорему 1:
 
 \begin{proof}
-    Пусть $V$ --- конечномерное пространство. По определению, в $V$ существует базис $e_1, \ldots, e_m$. Пусть $\{f_i : i \in I\}$ --- другой базис. Если этот базис бесконечен, то в нём содержится конечная линейно незавсимая система векторов $f_1, \ldots, f_n$, где $n > m$. При этом, т.\,к. $e_1, \ldots, e_m$ --- базис, мы имеем $\{f_1, \ldots, f_n\} \subseteq \langle e_1, \ldots, e_m\rangle$, что противоречит лемме о линейной зависимости. Следовательно, базис $\{f_i : i \in I\}$ конечен, т.\,е. имеет вид $f_1, \ldots, f_n$. Тогда $\{f_1, \ldots, f_n\} \subseteq \langle e_1, \ldots, e_m \rangle$ и $\{e_1, \ldots, e_m\} \subseteq \langle f_1, \ldots, f_m\rangle$. Отсюда $n = m$.
+    Пусть $V$ --- конечномерное пространство и в $V$ существует базис $e_1, \ldots, e_m$. Пусть $\{f_i : i \in I\}$ --- другой базис. Если этот базис бесконечен, то в нём содержится конечная линейно независимая система векторов $f_1, \ldots, f_n$, где $n > m$. При этом, т.\,к. $e_1, \ldots, e_m$ --- базис, мы имеем $\{f_1, \ldots, f_n\} \subseteq \langle e_1, \ldots, e_m\rangle$, что противоречит лемме о линейной зависимости. Следовательно, базис $\{f_i : i \in I\}$ конечен, т.\,е. имеет вид $f_1, \ldots, f_n$. Тогда $\{f_1, \ldots, f_n\} \subseteq \langle e_1, \ldots, e_m \rangle$ и $\{e_1, \ldots, e_m\} \subseteq \langle f_1, \ldots, f_m\rangle$. Отсюда $n = m$.
 \end{proof}
 
 \begin{lemma}
@@ -207,11 +301,11 @@
             u_{1n} & u_{2n} & \ldots & u_{mn}\\
         \end{pmatrix}.
     \]
-    Отметим, что $\rk U = m$, а $\rk(U \mid E) = n$. Так что нужно привести матрицу $(U \mid E)$ элементарными преобразованиями к ступенчатому виду и дополнить столбцы матрицы $U$ единичными столбцами, вошедшими в базис матрицы $(U \mid E)$.
+    Отметим, что $\rk U = m$, а $\rk(U \mid E) = n$. Так что нужно привести матрицу $(U \mid E)$ элементарными преобразованиями строк к ступенчатому виду и дополнить столбцы матрицы $U$ единичными столбцами, вошедшими в базис матрицы $(U \mid E)$ (в первом семестре была теорема, что при элементарных преобразованиях строк линейные зависимости между столбцами не меняются).
 \end{remark}
 
 \begin{lemma}
-    Всякое конечномерное линейное пространство $V$ обладает базисом. Более точно, из всякого конечного порождающего множества $S \subset V$ можно выбрать базис пространства $V$.
+    Всякое конечномерное линейное пространство $V$ обладает базисом. Более точно, из всякого конечного порождающего множества $S \subseteq V$ можно выбрать базис пространства $V$.
 \end{lemma}
 
 \begin{proof}
@@ -225,16 +319,6 @@
 \begin{definition}
     \textit{Размерностью} конечномерного линейного пространства $V$ (обозначается $\dim V$) называется число элементов в базисе $V$. Если $V$ бесконечномерно, то пишут $\dim V = \infty$.
 \end{definition}
-
-\begin{lemma}[Свойство монотонности размерности]
-    Подпространство $W$ конечномерного пространства $V$ конечномерно, причём $\dim W \leqslant \dim V$ и равенство достигается только при $W = V$.
-\end{lemma}
-
-\begin{proof}
-    Пусть $\dim V = m$ и $e_1, \ldots, e_m$ --- базис пространства $V$. Если $\dim W > m$, то в $W$ найдётся линейно независимая система $f_1, \ldots, f_n$ с $n > m$. Причём $\{f_1, \ldots, f_n\} \subseteq \langle e_1, \ldots, e_m\rangle = V$, что противоречит лемме о линейной зависимости. Следовательно, $\dim W \leqslant \dim V$.
-
-    Пусть $\dim W = \dim V = m$ и пусть $f_1, \ldots, f_m$ --- базис в $W$. Тогда каждый вектор линейно выражается через $f_1, \ldots, f_m$, так как иначе получили бы линейно независимую систему $f_1, \ldots, f_m, e_i$ из $m + 1$ векторов в $V$, что противоречит теореме 1. Следовательно, любой вектор из $V$ лежит в $\langle f_1, \ldots, f_m\rangle = W$, т.\,е. $V \subseteq W$, а обратное включение верно из условия. Итак, получаем $V = W$.
-\end{proof}
 
 \begin{remark}
     В нулевом пространстве $\{\bs{0}\}$ базисом естественно считать пустое множество $\varnothing$. Поэтому $\dim\{\bs{0}\} = 0$.

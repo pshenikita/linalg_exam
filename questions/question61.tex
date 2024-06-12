@@ -1,0 +1,161 @@
+\section{Тензорная алгебра векторного пространства. Внешняя алгебра и ее размерность}
+
+Определение алгебры можно вспомнить, посмотрев в 11-ый вопрос.
+
+\begin{definition}
+    Алгебра $A$ называется \textit{градуированной}, если она допускает разложение во внешнюю прямую сумму $A = \bigoplus\limits_iA_i$, причём $A_{i_1}A_{i_2} \subseteq A_{i_1 + i_2}$.
+\end{definition}
+
+Напомним, что мы рассматриваем $n$-мерное векторное пространство $V$ над полем $\F$ нулевой характеристики.
+
+Рассмотрим внешнюю прямую сумму
+\[
+    \Ten(V^\ast) \vcentcolon = \Ten_0^0(V) \oplus \Ten_1^0(V) \oplus \Ten_2^0(V) \oplus \ldots = \bigoplus_{p = 0}^\infty\Ten_p^0(V).
+\]
+
+Элементами этой суммы являются последовательности $(f_0, f_1, f_2, \ldots) = \sum_{i \geqslant 0}f_i$, $f_i \in \Ten_i^0(V)$, члены которой почти все равны нулю. Тензорное умножение определяет на $\Ten(V^\ast)$ умножение
+\[
+    \br{\sum_{i \geqslant 0}f_i}\br{\sum_{j \geqslant 0}g_i}\sum_{i + j \geqslant 0}f_i \otimes g_j,
+\]
+где $f_i \in \Ten_i^0(V)$, $g_j \in \Ten_j^0(V)$, которое задаёт на $\Ten(V^\ast)$ структуру градуированной ассоциативной (но не коммутативной) алгебры с единицей.
+
+\begin{definition}
+    Аналогично, для контравариантных тензоров определяется градуированная ассоциативная (но не коммутативная) алгебра с единицей:
+    \[
+        \Ten(V) \vcentcolon = \Ten_0^0(V) \oplus \Ten_0^1(V) \oplus \Ten_0^2(V) \oplus \ldots = \bigoplus_{q = 0}^\infty\Ten_0^q(V),
+    \]
+    которая называется \textit{тензорной алгеброй} пространства $V$.
+\end{definition}
+
+Алгебру $\Ten(V^\ast)$ ковариантных тензоров можно понимать как тензорную алгебру векторного пространства $V^\ast$.
+
+\begin{definition}
+    \textit{Внешним произведением} кососимметрических тензоров $P \in \Lambda^p(V)$ и $Q \in \Lambda^q(V)$ называется кососимметрический тензор
+    \[
+        P \wedge Q = \frac{(p + q)!}{p! \cdot q!}\Alt(P \otimes Q).
+    \]
+\end{definition}
+
+\begin{theorem}
+    Внешнее произведение кососимметрических тензоров обладает следующими свойствами: для любых $P \in \Lambda^p(V)$, $Q \in \Lambda^q(V)$, $R \in \Lambda^r(V)$ и $\lambda, \mu \in \F$
+    \begin{enumerate}[nolistsep]
+        \item $(\lambda P + \mu Q) \wedge R = \lambda P \wedge R + \mu Q \wedge R$ (при $p = q$);
+        \item $(Q \wedge P) = (-1)^{pq}P \wedge Q$;
+        \item $(P \wedge Q) \wedge R = P \wedge (Q \wedge R)$.
+    \end{enumerate}
+\end{theorem}
+
+Далее будем использовать следующие обозначения: для $\sigma \in S_p$ и $P \in \Ten_p^0(V)$ обозначим через $\sigma P$ тензор с компонентами $(\sigma P)_{i_1, \ldots, i_p} = P_{i_{\sigma(1)}, \ldots, i_{\sigma(p)}}$. По определению альтернирования, $\Alt P = \frac{1}{p!}\sum\limits_{\sigma \in S_p}\sgn\sigma \cdot \sigma P$, и имеет место соотношение
+\[
+    \sigma(\Alt P) = \Alt(\sigma P) = \sgn\sigma \cdot \Alt P.
+\]
+
+\begin{lemma}
+    Для любых тензоров $P \in \Ten_p^0(V)$, и $Q \in \Ten_q^0(V)$ имеем
+    \[
+        \Alt((\Alt P) \otimes Q) = \Alt(P \otimes Q) = \Alt(P \otimes (\Alt Q)).
+    \]
+\end{lemma}
+
+\begin{proof}
+    Докажем лишь первое равенство (второе доказывается аналогично). Поскольку операция $\otimes$ дистрибутивна, а оператор $\Alt$ линеен, имеем
+    \[
+        \Alt((\Alt P) \otimes Q) = \Alt\br{\br{\frac{1}{p!}\sum_{\sigma \in S_p}\sgn\sigma \cdot \sigma P} \otimes Q} = \frac{1}{p!}\sum_{\sigma \in S_p}\Alt(\sigma P \otimes Q).
+    \]
+
+    Каждой перестановке $\sigma \in S_p$ сопоставим перестановку $\widetilde{\sigma} \in S_{p + q}$, которая на первых $p$ индексах действует как $\sigma$, а остальные оставляет на месте, т.\,е.
+    \[
+        \widetilde{\sigma} =
+        \begin{pmatrix}
+            1 & \ldots & p & p + 1 & \ldots & p + q\\
+            \sigma(1) & \ldots & \sigma(p) & p + 1 & \ldots & p + q
+        \end{pmatrix}.
+    \]
+
+    При этом, очевидно, $\sgn\widetilde{\sigma} = \sgn\sigma$ и $\sigma P \otimes Q = \widetilde{\sigma}(P \otimes Q)$. Тогда имеем
+    \begin{multline*}
+        \Alt((\Alt P) \otimes Q) = \frac{1}{p!}\sum_{\sigma \in S_p}\sgn\sigma \cdot \Alt(\widetilde{\sigma}(P \otimes Q)) =\\ = \frac{1}{p!}\sum_{\sigma \in S_p}\sgn\sigma\sgn\widetilde{\sigma} \cdot \Alt(P \otimes Q) = \frac{1}{p!}\sum_{\sigma \in S_p}\Alt(P \otimes Q) = \Alt(P \otimes Q).
+    \end{multline*}
+\end{proof}
+
+\begin{proof}
+    \begin{enumerate}
+        \item Дистрибутивность вытекает из дистрибутивности операции $\otimes$ и линейности оператора $\Alt$.
+        \item Для доказательства антикоммутативности достаточно проверить, что имеет место соотношение $\Alt(Q \otimes P) = (-1)^{pq}\Alt(P \otimes Q)$. Введём перестановку
+            \[
+                \delta =
+                \begin{pmatrix}
+                    1 & \ldots & p & p + 1 & \ldots & p + q\\
+                    q + 1 & \ldots & q + p & 1 & \ldots & q
+                \end{pmatrix}.
+            \]
+            Тогда $\sgn\delta = (-1)^{pq}$, т.\,к. $\delta$ --- результать $pq$ транспозиций. Мы имеем
+            \begin{multline*}
+                \Alt(Q \otimes P)_{i_1, \ldots, i_{p + q}} = \frac{1}{(p + q)!}\sum_{\sigma \in S_{p + q}}\sgn\sigma \cdot Q_{i_{\sigma(1)}, \ldots, i_{\sigma(q)}}P_{i_{\sigma(q + 1)}, \ldots, i_{\sigma(q + p)}} =\\ = \frac{1}{(p + q)!}\sum_{\sigma \in S_{p + q}}\sgn\delta\sgn\delta \cdot \sigma P_{i_{\sigma\delta(1)}, \ldots, i_{\sigma\delta(p)}}Q_{i_{\sigma\delta(p + 1)}, \ldots, i_{\sigma\delta(p + q)}} =\\ =\sgn\delta\frac{1}{(p + q)!}\sum_{\varphi \in S_{p + q}}\sgn\varphi P_{i_{\varphi(1)}, \ldots, i_{\varphi(p)}} Q_{i_{\varphi(p + 1)}, \ldots, i_{\varphi(p + q)}} = (-1)^{pq}\Alt(P \otimes Q)_{i_1, \ldots, i_{p + q}}.
+            \end{multline*}
+        \item Мы имеем
+            \begin{multline*}
+                (P \wedge Q) \wedge R = \frac{(p + q + r)!}{(p + q)! \cdot r!}\Alt((P \wedge Q) \otimes R) =\\ = \frac{(p + q + r)!}{(p + q)! \cdot r!}\Alt\br{\frac{(p + q)!}{p! \cdot q!}\Alt(P \otimes Q) \otimes R} = \frac{(p + q + r)!}{p! \cdot q! \cdot r!}\Alt(P \otimes Q \otimes R),
+            \end{multline*}
+            где в последнем равенстве мы воспользовались предыдущей леммой. Равенство $P \wedge (Q \wedge R) = \frac{(p + q + r)!}{p! \cdot q! \cdot r!}\Alt(P \otimes Q \otimes R)$ устанавливается аналогично.
+    \end{enumerate}
+\end{proof}
+
+Выберем теперь базис $e_1, \ldots, e_n$ в $V$, и пусть $\varepsilon^1, \ldots, \varepsilon^n$ --- двойственный базис в $V^\ast = \Lambda^1(V)$. Рассмотрим кососимметрические тензоры
+\[
+    \varepsilon^{i_1} \wedge \ldots \wedge \varepsilon^{i_p} = p!\Alt(\varepsilon^{i_1} \otimes \ldots \otimes \varepsilon^{i_p}) = \sum_{\sigma \in S_p}\sgn\sigma \cdot \varepsilon^{i_{\sigma(1)}} \otimes \ldots \otimes \varepsilon^{i_{\sigma(p)}}.\eqno(\ast)
+\]
+
+В силу последней теоремы имеем $\varepsilon^{i_1} \wedge \ldots \wedge \varepsilon^{i_p} = \sgn\sigma \cdot \varepsilon^{i_{\sigma(1)}} \wedge \ldots \wedge \varepsilon^{i_{\sigma(p)}}$.
+
+\begin{remark}
+    Обратим внимание, что ввиду выбора коэффициента $\frac{(p + q)!}{p! \cdot q!}$ в определении внешнего произведения, выражение $\varepsilon^{i_1} \wedge \ldots \wedge \varepsilon^{i_p}$ оказалось линейной комбинацией выражений $\varepsilon^{i_\sigma(1)} \otimes \ldots \otimes \varepsilon^{i_{\sigma(p)}}$ с целыми коэффициентами. Таким образом, кососимметрические тензоры $\varepsilon^{i_1} \wedge \ldots \wedge \varepsilon^{i_p}$ определены над конечными полями (характеристики, отличной от двух) и даже над целыми числами, что удобно с алгебраической точки зрения.
+\end{remark}
+
+\begin{theorem}
+    Кососимметрические тензоры $\{\varepsilon^{i_1} \wedge \ldots \wedge \varepsilon^{i_p} : i_1 < \ldots < i_p\}$ образуют базис в прострастве $\Lambda^p(V)$. В частности, $\dim\Lambda^p(V) = C_n^p$.
+\end{theorem}
+
+\begin{proof}
+    Сначала докажем, что любой кососимметрический тензор $T \in \Lambda^p(V)$ представляется в виде линейной комбинации данных тензоров. Разложим $T$ по базису $\varepsilon^{i_1} \otimes \ldots \otimes \varepsilon^{i_p}$:
+    \[
+        T = T_{i_1, \ldots, i_p}\varepsilon^{i_1} \otimes \ldots \otimes \varepsilon^{i_p}.
+    \]
+
+    Теперь применим к обеим частям оператор $\Alt$. Т.\,к. $T$ --- кососимметрический тензор, $\Alt T = T$. С другой стороны, $\Alt(\varepsilon^{i_1} \otimes \ldots \otimes \varepsilon^{i_p}) = \frac{1}{p!}\varepsilon^{i_1} \wedge \ldots \wedge \varepsilon^{i_p}$. Итак, получаем
+    \[
+        T = \frac{1}{p!}\sum_{i_1, \ldots, i_p}T_{i_1, \ldots, i_p}\varepsilon^{i_1}\wedge \ldots \wedge \varepsilon^{i_p} = \sum_{i_1 < \ldots < i_p}T_{i_1, \ldots, i_p}\varepsilon^{i_1} \wedge \ldots \wedge \varepsilon^{i_p},
+    \]
+    что и даёт требуемое представление в виде линейной комбинации.
+
+    Предположим, что тензоры $\{\varepsilon^{i_1} \wedge \ldots \wedge \varepsilon^{i_p} : i_1 < \ldots < i_p\}$ линейно зависимы, т.\,е.
+    \[
+        \sum_{i_1 < \ldots < i_p}\lambda_{i_1, \ldots, i_p}\varepsilon^{i_1} \wedge \ldots \wedge \varepsilon^{i_p} = 0.
+    \]
+
+    Тогда из $(\ast)$ получаем
+    \[
+        \sum_{i_1 < \ldots < i_p}\lambda_{i_1, \ldots, i_p}\sum_{\sigma \in S_p}\sgn\sigma \cdot \varepsilon^{i_{\sigma(1)}} \otimes \ldots \otimes \varepsilon^{i_{\sigma(p)}} = 0.
+    \]
+
+    В этой сумме все тензоры $\varepsilon^{i_{\sigma(1)}} \otimes \ldots \otimes \varepsilon^{i_{\sigma(p)}}$ различны, то они линейно независимы. Отсюда получаем, что $\lambda_{i_1, \ldots, i_p} = 0$.
+\end{proof}
+
+\begin{definition}
+    Выражение $T = \sum\limits_{i_1 < \ldots < i_p}T_{i_1, \ldots, i_p}\varepsilon^{i_1} \wedge \ldots \wedge \varepsilon^{i_p}$ (представляющее собой разложение кососимметрического тензора $T \in \Lambda^p(V)$ по базису $\{\varepsilon^{i_1} \wedge \ldots \wedge \varepsilon^{i_p} : i_1 < \ldots < i_p\}$) называется \textit{внешней $p$-формой}.
+\end{definition}
+
+Теперь рассмотрим внешнюю прямую сумму
+\[
+    \Lambda(V) = \bigoplus_{p = 0}^n\Lambda^p(V).
+\]
+
+Внешнее умножение определяет на $\Lambda(V)$ умножение
+\[
+    \br{\sum_{i \geqslant 0}f_i} \wedge \br{\sum_{j \geqslant 0}g_j} = \sum_{i + j \geqslant 0}f_i \wedge g_j,
+\]
+где $f_i \in \Lambda^i(V)$, $g_j \in \Lambda^j(V)$, которое задаёт на $\Lambda(V)$ структуру градуированной ассциативной алгебры с единицей. Алгебра $\Lambda(V)$ над полем $\F$ называется \textit{внешней алгеброй} пространства $V$. Размерность внешней алгебры
+\[
+    \dim\Lambda(V) = \dim\br{\bigoplus_{p = 0}^n\Lambda^p(V)} = \sum_{p = 0}^n\dim\Lambda^p(V) = \sum_{p = 0}^nC_n^p = 2^n.
+\]
+
