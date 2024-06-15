@@ -28,12 +28,12 @@
 
 В частности, квадратичная функция $q$ не зависит от выбора начала отсчёта. В координатах выражение аффинно-квадратичной функции принимает вид
 \[
-    Q(x) = \sum_{i, j}x^ix^ja_{ij} + \sum_ix^ib_i + c\quad(a_{ij} = a_{ji}).
+    Q(x) = \sum_{i, j}x_ix_ja_{ij} + \sum_ix_ib_i + c\quad(a_{ij} = a_{ji}).
 \]
 
 Коэффициентам $b_i$ и $c$ можно придать следующий смысл:
 \[
-    c = Q(o),\quad b_i - \frac{\partial Q}{\partial x_i}(o).
+    c = Q(o),\quad b_i = \frac{\partial Q}{\partial x_i}(o).
 \]
 
 \begin{definition}
@@ -59,7 +59,7 @@
 \begin{theorem}
     Для любой аффинно-квадратичной функции $Q: \A \to \F$, не являющеся аффинно-линейной, существует система координат $(o; e_1, \ldots, e_n)$, в которой $Q$ имеет один из следующих видов $(\ast)$:
     \begin{gather*}
-        Q(a) = \lambda_1x_1)^2 + \ldots + \lambda_rx_r^2 + \lambda_{r + 1},
+        Q(a) = \lambda_1x_1^2 + \ldots + \lambda_rx_r^2 + \lambda_{r + 1},\\
         Q(a) = \lambda_1x_1^2 + \ldots + \lambda_rx_r^2 + 2x_{r + 1},
     \end{gather*}
     где числа $\lambda_1, \ldots, \lambda_r$ отличны от нуля.
@@ -82,7 +82,7 @@
 
     Фиксируем произвольную точку $o^\prime \in \A$. В системе координат $(o^\prime; e_1^\prime, \ldots, e_n^\prime)$ функция $Q$ примет вид
     \[
-        Q(o^\prime + v) = \lambda_1{x_1^\prime}^2 + \ldots = \lambda_r{x_r^\prime}^2 + 2u_1^\prime x_1^\prime + \ldots + 2u_n^\prime x_n^\prime + \alpha^\prime.
+        Q(o^\prime + v) = \lambda_1{x_1^\prime}^2 + \ldots + \lambda_r{x_r^\prime}^2 + 2u_1^\prime x_1^\prime + \ldots + 2u_n^\prime x_n^\prime + \alpha^\prime.
     \]
 
     Перенос начала координат в точку $o^{\prime\prime}$, сводящийся к замене координат

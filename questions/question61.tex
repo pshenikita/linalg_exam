@@ -15,7 +15,7 @@
 
 Элементами этой суммы являются последовательности $(f_0, f_1, f_2, \ldots) = \sum_{i \geqslant 0}f_i$, $f_i \in \Ten_i^0(V)$, члены которой почти все равны нулю. Тензорное умножение определяет на $\Ten(V^\ast)$ умножение
 \[
-    \br{\sum_{i \geqslant 0}f_i}\br{\sum_{j \geqslant 0}g_i} = \sum_{i + j \geqslant 0}f_i \otimes g_j,
+    \br{\sum_{i \geqslant 0}f_i} \cdot \br{\sum_{j \geqslant 0}g_i} \vcentcolon = \sum_{i + j \geqslant 0}f_i \otimes g_j,
 \]
 где $f_i \in \Ten_i^0(V)$, $g_j \in \Ten_j^0(V)$, которое задаёт на $\Ten(V^\ast)$ структуру градуированной ассоциативной (но не коммутативной) алгебры с единицей.
 
@@ -106,10 +106,10 @@
     \varepsilon^{i_1} \wedge \ldots \wedge \varepsilon^{i_p} = p!\Alt(\varepsilon^{i_1} \otimes \ldots \otimes \varepsilon^{i_p}) = \sum_{\sigma \in S_p}\sgn\sigma \cdot \varepsilon^{i_{\sigma(1)}} \otimes \ldots \otimes \varepsilon^{i_{\sigma(p)}}.\eqno(\ast)
 \]
 
-В силу последней теоремы имеем $\varepsilon^{i_1} \wedge \ldots \wedge \varepsilon^{i_p} = \sgn\sigma \cdot \varepsilon^{i_{\sigma(1)}} \wedge \ldots \wedge \varepsilon^{i_{\sigma(p)}}$.
+В силу последней теоремы имеем $\varepsilon^{i_1} \wedge \ldots \wedge \varepsilon^{i_p} = \sgn\sigma \cdot \varepsilon^{i_{\sigma(1)}} \wedge \ldots \wedge \varepsilon^{i_{\sigma(p)}}$. В частности, если среди сомножителей найдутся два равных, то всё произведение равно нулю.
 
 \begin{remark}
-    Обратим внимание, что ввиду выбора коэффициента $\frac{(p + q)!}{p! \cdot q!}$ в определении внешнего произведения, выражение $\varepsilon^{i_1} \wedge \ldots \wedge \varepsilon^{i_p}$ оказалось линейной комбинацией выражений $\varepsilon^{i_\sigma(1)} \otimes \ldots \otimes \varepsilon^{i_{\sigma(p)}}$ с целыми коэффициентами. Таким образом, кососимметрические тензоры $\varepsilon^{i_1} \wedge \ldots \wedge \varepsilon^{i_p}$ определены над конечными полями (характеристики, отличной от двух) и даже над целыми числами, что удобно с алгебраической точки зрения.
+    Обратим внимание, что ввиду выбора коэффициента $\frac{(p + q)!}{p! \cdot q!}$ в определении внешнего произведения выражение $\varepsilon^{i_1} \wedge \ldots \wedge \varepsilon^{i_p}$ оказалось линейной комбинацией выражений $\varepsilon^{i_\sigma(1)} \otimes \ldots \otimes \varepsilon^{i_{\sigma(p)}}$ с целыми коэффициентами. Значит, кососимметрические тензоры $\varepsilon^{i_1} \wedge \ldots \wedge \varepsilon^{i_p}$ определены над конечными полями (характеристики, отличной от двух) и даже над целыми числами, что удобно с алгебраической точки зрения.
 \end{remark}
 
 \begin{theorem}
@@ -152,9 +152,9 @@
 
 Внешнее умножение определяет на $\Lambda(V)$ умножение
 \[
-    \br{\sum_{i \geqslant 0}f_i} \wedge \br{\sum_{j \geqslant 0}g_j} = \sum_{i + j \geqslant 0}f_i \wedge g_j,
+    \br{\sum_{i \geqslant 0}f_i} \cdot \br{\sum_{j \geqslant 0}g_j} \vcentcolon = \sum_{i + j \geqslant 0}f_i \wedge g_j,
 \]
-где $f_i \in \Lambda^i(V)$, $g_j \in \Lambda^j(V)$, которое задаёт на $\Lambda(V)$ структуру градуированной ассциативной алгебры с единицей. Алгебра $\Lambda(V)$ над полем $\F$ называется \textit{внешней алгеброй} пространства $V$. Размерность внешней алгебры
+где $f_i \in \Lambda^i(V)$, $g_j \in \Lambda^j(V)$, которое задаёт на $\Lambda(V)$ структуру градуированной ассоциативной (но не коммутативной) алгебры с единицей. Алгебра $\Lambda(V)$ над полем $\F$ называется \textit{внешней алгеброй} пространства $V$. Размерность внешней алгебры
 \[
     \dim\Lambda(V) = \dim\br{\bigoplus_{p = 0}^n\Lambda^p(V)} = \sum_{p = 0}^n\dim\Lambda^p(V) = \sum_{p = 0}^nC_n^p = 2^n.
 \]
