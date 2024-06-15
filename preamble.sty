@@ -70,12 +70,14 @@
 \renewcommand{\U}{\mathcal{U}}
 \renewcommand{\O}{\mathcal{O}}
 \renewcommand{\S}{\mathcal{S}}
+\newcommand{\D}{\mathcal{D}}
 \newcommand{\ds}{\displaystyle}
 \newcommand{\id}{\mathrm{id}}
 \newcommand{\rk}{\operatorname{rk}}
 \newcommand{\tr}{\operatorname{tr}}
 \newcommand{\pr}{\operatorname{pr}}
 \newcommand{\ort}{\operatorname{ort}}
+\newcommand{\pf}{\operatorname{pf}}
 \newcommand{\Vol}{\operatorname{Vol}}
 \newcommand{\sgn}{\operatorname{sgn}}
 \newcommand{\dist}{\operatorname{dist}}
@@ -250,4 +252,23 @@
     }{
     \par\smallskip
 }
+
+% https://tex.stackexchange.com/questions/251904/hyperlinks-from-chapter-and-section-headings-back-to-the-table-of-contents
+\makeatletter
+\let\hyperchapter\chapter
+\def\chapter{\@ifstar\starchapter\mychapter}
+\def\starchapter{\hyperchapter*}
+\newcommand{\mychapter}[2][\@empty]% #1=optional (toc and top of page), #2=title
+{\ifx#1\@empty \hyperchapter[#2]{\hyperlink{toc.chapter.\thechapter}{#2}}
+ \else \hyperchapter[#1]{\hyperlink{toc.chapter.\thechapter}{#2}}
+ \fi}
+
+\let\hypersection\section
+\def\section{\@ifstar\starsection\mysection}
+\def\starsection{\hypersection*}
+\newcommand{\mysection}[2][\@empty]% #1=optional (toc), #2=title
+{\ifx#1\@empty \hypersection[#2]{\hyperlink{toc.section.\thesection}{#2}}
+ \else \hypersecton[#1]{\hyperlink{toc.section.\thesection}{#2}}
+ \fi}
+\makeatother
 
