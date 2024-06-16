@@ -1,4 +1,4 @@
-\section{Тензорная алгебра векторного пространства. Внешняя алгебра и ее размерность}
+\section{Тензорная алгебра векторного пространства. Внешняя алгебра и её размерность}
 
 Определение алгебры можно вспомнить, посмотрев в 11-ый вопрос.
 
@@ -13,7 +13,7 @@
     \Ten(V^\ast) \vcentcolon = \Ten_0^0(V) \oplus \Ten_1^0(V) \oplus \Ten_2^0(V) \oplus \ldots = \bigoplus_{p = 0}^\infty\Ten_p^0(V).
 \]
 
-Элементами этой суммы являются последовательности $(f_0, f_1, f_2, \ldots) = \sum_{i \geqslant 0}f_i$, $f_i \in \Ten_i^0(V)$, члены которой почти все равны нулю. Тензорное умножение определяет на $\Ten(V^\ast)$ умножение
+Элементами этой суммы являются последовательности $(f_0, f_1, f_2, \ldots) = \sum\limits_{i \geqslant 0}f_i$, $f_i \in \Ten_i^0(V)$, члены которой почти все равны нулю. Тензорное умножение определяет на $\Ten(V^\ast)$ умножение
 \[
     \br{\sum_{i \geqslant 0}f_i} \cdot \br{\sum_{j \geqslant 0}g_i} \vcentcolon = \sum_{i + j \geqslant 0}f_i \otimes g_j,
 \]
@@ -32,7 +32,7 @@
 \begin{definition}
     \textit{Внешним произведением} кососимметрических тензоров $P \in \Lambda^p(V)$ и $Q \in \Lambda^q(V)$ называется кососимметрический тензор
     \[
-        P \wedge Q = \frac{(p + q)!}{p! \cdot q!}\Alt(P \otimes Q).
+        P \wedge Q \vcentcolon = \frac{(p + q)!}{p! \cdot q!}\Alt(P \otimes Q).
     \]
 \end{definition}
 
@@ -89,9 +89,9 @@
                     q + 1 & \ldots & q + p & 1 & \ldots & q
                 \end{pmatrix}.
             \]
-            Тогда $\sgn\delta = (-1)^{pq}$, т.\,к. $\delta$ --- результать $pq$ транспозиций. Мы имеем
+            Тогда $\sgn\delta = (-1)^{pq}$, т.\,к. $\delta$ --- результат $pq$ транспозиций. Мы имеем
             \begin{multline*}
-                \Alt(Q \otimes P)_{i_1, \ldots, i_{p + q}} = \frac{1}{(p + q)!}\sum_{\sigma \in S_{p + q}}\sgn\sigma \cdot Q_{i_{\sigma(1)}, \ldots, i_{\sigma(q)}}P_{i_{\sigma(q + 1)}, \ldots, i_{\sigma(q + p)}} =\\ = \frac{1}{(p + q)!}\sum_{\sigma \in S_{p + q}}\sgn\delta\sgn\delta \cdot \sigma P_{i_{\sigma\delta(1)}, \ldots, i_{\sigma\delta(p)}}Q_{i_{\sigma\delta(p + 1)}, \ldots, i_{\sigma\delta(p + q)}} =\\ =\sgn\delta\frac{1}{(p + q)!}\sum_{\varphi \in S_{p + q}}\sgn\varphi P_{i_{\varphi(1)}, \ldots, i_{\varphi(p)}} Q_{i_{\varphi(p + 1)}, \ldots, i_{\varphi(p + q)}} = (-1)^{pq}\Alt(P \otimes Q)_{i_1, \ldots, i_{p + q}}.
+                \Alt(Q \otimes P)_{i_1, \ldots, i_{p + q}} = \frac{1}{(p + q)!}\sum_{\sigma \in S_{p + q}}\sgn\sigma \cdot Q_{i_{\sigma(1)}, \ldots, i_{\sigma(q)}}P_{i_{\sigma(q + 1)}, \ldots, i_{\sigma(q + p)}} =\\ = \frac{1}{(p + q)!}\sum_{\sigma \in S_{p + q}}\sgn\delta\sgn\sigma\delta \cdot P_{i_{\sigma\delta(1)}, \ldots, i_{\sigma\delta(p)}}Q_{i_{\sigma\delta(p + 1)}, \ldots, i_{\sigma\delta(p + q)}} =\\ =\sgn\delta\frac{1}{(p + q)!}\sum_{\varphi \in S_{p + q}}\sgn\varphi P_{i_{\varphi(1)}, \ldots, i_{\varphi(p)}} Q_{i_{\varphi(p + 1)}, \ldots, i_{\varphi(p + q)}} = (-1)^{pq}\Alt(P \otimes Q)_{i_1, \ldots, i_{p + q}}.
             \end{multline*}
         \item Мы имеем
             \begin{multline*}

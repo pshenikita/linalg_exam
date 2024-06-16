@@ -22,22 +22,22 @@
     Выражение $B(x, y) = b_{ij}x^iy^j$ называется \textit{билинейной формой}.
 \end{definition}
 
-Билинейная форма представляет собой однородный многочлен степени $2$ от двух наборов переменных $x^1, \ldots, x^n$ и $y^1, \ldots, y^n$, который линее по $x$ при фиксированных $y$ и линеен по $y$ при фиксированных $x$.
+Билинейная форма представляет собой однородный многочлен степени $2$ от двух наборов переменных $x^1, \ldots, x^n$ и $y^1, \ldots, y^n$, который линеен по $x$ при фиксированных $y$ и линеен по $y$ при фиксированных $x$.
 
 \begin{theorem}[Закон изменения матрицы билинейной функции]
     Имеет место соотношение
     \[
-        B^t = C^tBC,
+        B^\prime = C^tBC,
     \]
-    где $B$ --- матрица билинейной функции $\B: V \times V \to \F$ в базисе $e_1, \ldots, e_n$, $B^t$ --- матрица в базисе $e_{1^\prime}, \ldots, e_{n^\prime}$ и $C$ --- матрица перехода от базиса $e_1, \ldots, e_n$ к базису $e_{1^\prime}, \ldots, e_{n^\prime}$.
+    где $B$ --- матрица билинейной функции $\B: V \times V \to \F$ в базисе $e_1, \ldots, e_n$, $B^\prime$ --- матрица в базисе $e_{1^\prime}, \ldots, e_{n^\prime}$ и $C$ --- матрица перехода от базиса $e_1, \ldots, e_n$ к базису $e_{1^\prime}, \ldots, e_{n^\prime}$.
 \end{theorem}
 
 \begin{proof}
-    Пусть $B = (b_{ij})$, $B^t = (b^\prime_{ij})$, $C = (c^i_{i^\prime})$. Мы имеем
+    Пусть $B = (b_{ij})$, $B^\prime = (b^\prime_{ij})$, $C = (c^i_{i^\prime})$. Мы имеем
     \[
         b^\prime_{ij} = \B(e_{i^\prime}, e_{j^\prime}) = \B(c^i_{i^\prime}e_i, c^j_{j^\prime}e_j) = c^i_{i^\prime}c^j_{j^\prime}\B(e_i, e_j) = c^i_{i^\prime}b_{ij}c^j_{j^\prime},
     \]
-    что эквивалентно матричному соотношению $B^t = C^tBC$.
+    что эквивалентно матричному соотношению $B^\prime = C^tBC$.
 \end{proof}
 
 \begin{corollary}
@@ -45,7 +45,7 @@
 \end{corollary}
 
 \begin{proof}
-    Т.\,к. матрица $C$ обратима, $\rk B^t = \rk(C^tBC) = \rk B$.
+    Т.\,к. матрица $C$ обратима, $\rk B^\prime = \rk(C^tBC) = \rk B$.
 \end{proof}
 
 \begin{definition}
