@@ -39,6 +39,16 @@
 \end{proof}
 
 \begin{proposal}
+    $\Ker\A = (\Im\A^\ast)^\perp$.
+\end{proposal}
+
+\begin{proof}
+    Пусть $x \in \Ker\A$, тогда $\forall y \in V$ выполняется $(x, \A^\ast y) = (\overbrace{\A x}^{\bs{0}}, y) = 0$. Отсюда, $x \in (\Im\A^\ast)^\perp$ и $\Ker\A \subseteq (\Im\A^\ast)^\perp$.
+
+    Теперь пусть $x \in \Im\A^\ast$, тогда $\forall y \in V$ выполняется $(\A x, y) = (x, \A^\ast y) = 0$. При $y = \A x$ получаем $(\A x, \A x) = 0$ и $\A x = \bs{0}$. Значит, $x \in \Ker\A$ и $(\Im\A^\ast)^\perp \subseteq \Ker\A$. Итак, $\Ker\A = (\Im\A^\ast)^\perp$.
+\end{proof}
+
+\begin{proposal}
     Имеют место следующие равенства:
     \begin{enumerate}[nolistsep]
         \item $(\A + \B)^\ast = \A^\ast + \B^\ast$, $(\lambda\A)^\ast = \overline{\lambda}\A^\ast$;
@@ -47,7 +57,7 @@
 \end{proposal}
 
 \begin{proof}
-    Это следует из свойств операции транспонирования матриц, благодаря предыдущему предложению.
+    Это следует из свойств операции транспонирования матриц, благодаря предложению 1.
 \end{proof}
 
 Докажем ключевую лемму, которая нам не раз понадобится в дальнейшем.
